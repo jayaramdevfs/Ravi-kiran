@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:tmx.wd3.myworkdayjobs.com)",
+      "Bash(npm list:*)",
+      "Bash(npm install:*)",
+      "Bash(ls -la \"/c/Users/jayar/OneDrive/Desktop/Ravi kiran/\"*.docx \"/c/Users/jayar/OneDrive/Desktop/Ravi kiran/html_files/\"*.html)",
+      "Bash(powershell -Command \"Remove-Item -Force ''.git/index.lock'' -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Test-Path ''.git/index.lock''\")"
+    ]
+  }
+}
