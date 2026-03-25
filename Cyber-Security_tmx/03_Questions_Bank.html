@@ -3,133 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERSECURITY QUESTIONS BANK - TMX GROUP</title>
+    <title>TMX | Cyber Security Question Bank (150+)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
         :root {
-            --bg-color: #21201e;
-            --card-bg: #292825;
+            --bg: #21201e;
+            --surface: #2a2927;
+            --border: #3c3b39;
+            --text: #e8e6e3;
+            --text-dim: #a8a6a3;
             --accent: #df7c58;
-            --accent-secondary: #42413e;
-            --text-main: #e8e4dc;
-            --text-muted: #9b9a97;
-            --highlight: #df7c58;
+            --accent-glow: rgba(223, 124, 88, 0.15);
         }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
-        .container { max-width: 1000px; margin: auto; padding: 1.5rem; }
-        header { text-align: center; margin-bottom: 2rem; }
-        h1, h2 { font-family: 'Playfair Display', serif; font-weight: 500; }
-        
-        .filters { position: sticky; top: 50px; background: rgba(33, 32, 30, 0.95); padding: 12px; z-index: 90; border-radius: 12px; margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; backdrop-filter: blur(8px); border-bottom: 1px solid var(--accent-secondary); }
-        .search-bar { flex: 1; min-width: 200px; padding: 12px 20px; background: transparent; border: 1px solid var(--accent-secondary); color: var(--text-main); border-radius: 24px; outline: none; }
-        .cat-select { padding: 10px 15px; background: var(--card-bg); border: 1px solid var(--accent-secondary); color: var(--text-main); border-radius: 24px; outline: none; cursor: pointer; }
 
-        .q-card { background: var(--card-bg); margin-bottom: 10px; border-radius: 12px; border: 1px solid var(--accent-secondary); transition: 0.2s; overflow: hidden; }
-        .q-btn { width: 100%; text-align: left; padding: 14px; background: none; border: none; color: var(--text-main); font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; font-size: 1rem; }
-        .q-ans { padding: 15px; display: none; color: var(--text-muted); border-top: 1px solid var(--accent-secondary); background: rgba(0,0,0,0.1); }
-        .cat-tag { font-size: 0.75rem; background: var(--accent-secondary); padding: 2px 8px; border-radius: 10px; margin-left: 10px; color: var(--text-main); }
-        .highlight-phrase { color: var(--accent); font-weight: 600; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 12px 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); }
-        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
-        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
-        
-        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
-        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; padding: 12px 18px; border-radius: 24px; cursor: pointer; z-index: 99; font-weight: bold; border: none; }
+        header { margin-bottom: 60px; border-bottom: 1px solid var(--border); padding-bottom: 30px; }
+        .branding { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
+        .meta { color: var(--text-dim); font-size: 0.9rem; }
+
+        .search-area {
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            background: var(--bg);
+            padding: 10px 0;
+        }
+
+        input {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-family: inherit;
+            width: 100%;
+        }
+
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .cat-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .cat-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .q-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            margin-bottom: 15px;
+            border-radius: 4px;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .q-card:hover { border-color: var(--accent); }
+
+        .q-btn {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .q-ans {
+            padding: 0 20px 20px 20px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            display: none;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+        }
+
+        .cat-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            background: rgba(223, 124, 88, 0.1);
+            color: var(--accent);
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        footer { margin-top: 80px; text-align: center; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); padding-top: 30px; }
     </style>
 </head>
 <body>
 
-<nav class="sticky">
-    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
-    <a href="01_Self_Introduction.html" class="nav-btn">Self Intro</a>
-    <a href="02_Project_Deep_Dive.html" class="nav-btn">Projects</a>
-    <a href="03_Questions_Bank.html" class="nav-btn active">Q Bank</a>
-    <a href="04_Study_Schedule.html" class="nav-btn">Schedule</a>
-    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
-    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
-</nav>
+<header>
+    <div class="branding">✺ CYBER SECURITY OPERATIONS ANALYST</div>
+    <h1>Question Bank</h1>
+    <div class="meta">150 Questions curated for TMX Group Interview | Junior Analyst Role</div>
+</header>
 
-<div class="container">
-    <header>
-        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> CYBERSECURITY QUESTIONS BANK</h1>
-        <p>Focused technical and behavioral prep for TMX SOC Analyst Interview.</p>
-    </header>
-
-    <div class="filters">
-        <input type="text" id="search" class="search-bar" placeholder="Search keywords (e.g., 'SIEM', 'TMX')..." onkeyup="filterQs()">
-        <select id="cat-filter" class="cat-select" onchange="filterQs()">
-            <option value="all">All Categories</option>
-            <option value="soc">SOC & SIEM</option>
-            <option value="ir">Incident Response</option>
-            <option value="net">Network Security</option>
-            <option value="cloud">Cloud Security</option>
-            <option value="behavioral">Behavioral</option>
-            <option value="tmx">TMX Specific</option>
-        </select>
-    </div>
-
-    <div id="q-container"></div>
+<div class="search-area">
+    <input type="text" id="srch" placeholder="Search by keyword (e.g., SIEM, Phishing, AWS)..." onkeyup="filterQs()">
+    <div style="color: var(--accent); font-weight: 600; padding: 12px;" id="qCount">150 Questions</div>
 </div>
 
-<button id="back-to-top" onclick="window.scrollTo(0,0)">↑ Top</button>
+<div class="category-filter" id="filters">
+    <button class="cat-btn active" onclick="filterCat('all', this)">All</button>
+    <button class="cat-btn" onclick="filterCat('soc', this)">SOC Operations</button>
+    <button class="cat-btn" onclick="filterCat('ir', this)">Incident Response</button>
+    <button class="cat-btn" onclick="filterCat('net', this)">Networking</button>
+    <button class="cat-btn" onclick="filterCat('cloud', this)">Cloud Security</button>
+    <button class="cat-btn" onclick="filterCat('iam', this)">IAM</button>
+    <button class="cat-btn" onclick="filterCat('vuln', this)">Vulnerability</button>
+    <button class="cat-btn" onclick="filterCat('edr', this)">EDR/XDR</button>
+    <button class="cat-btn" onclick="filterCat('grc', this)">GRC/NIST</button>
+    <button class="cat-btn" onclick="filterCat('tmx', this)">TMX & Resume</button>
+    <button class="cat-btn" onclick="filterCat('linux', this)">Linux/Advanced</button>
+    <button class="cat-btn" onclick="filterCat('behav', this)">Behavioral</button>
+</div>
 
-<footer>Prepared for Ravi Kiran Kambhampati | TMX Group | Cyber Security Interview Phase</footer>
+<div id="q-container">
+    <!-- Questions injected here -->
+</div>
+
+<footer>Prepared for Ravi Kiran Kambhampati | TMX Group | CAD $85K-$95K Target</footer>
 
 <script>
     const qData = [
-        { c: 'soc', q: "What is a SIEM and why is it used?", a: "SIEM (Security Information and Event Management) provides centralized logging and real-time correlation. It allows us to see patterns that individual devices miss. In my ELK Stack project, I used it to correlate failed SSH attempts with subsequent successful ones from different IPs." },
-        { c: 'soc', q: "Describe the difference between an IDS and an IPS.", a: "An IDS (Intrusion Detection System) is passive; it alerts an analyst when it sees suspicious traffic. An IPS (Intrusion Prevention System) is active; it automatically drops or blocks the traffic to prevent the attack." },
-        { c: 'soc', q: "What are the common ports for SSH, HTTP, HTTPS, and RDP?", a: "SSH is 22, HTTP is 80, HTTPS is 443, and RDP is 3389. I monitor for spikes in RDP (3389) as it's a common target for ransomware actors." },
-        { c: 'ir', q: "Explain the Incident Response lifecycle (NIST).", a: "It has four main phases: 1. Preparation (setting tools/policies), 2. Detection & Analysis (spotting the event), 3. Containment, Eradication & Recovery (stopping the spread and fixing it), and 4. Post-Incident Activity (Lessons Learned)." },
-        { c: 'ir', q: "What is a False Positive and why is it a problem?", a: "A False Positive is when a benign activity is flagged as malicious. It creates 'Alert Fatigue' for the SOC team. I aim to reduce these by fine-tuning Regex patterns as I did in my Python SOC project." },
-        { c: 'net', q: "What is the difference between TCP and UDP?", a: "TCP is connection-oriented and ensures packet delivery (used for HTTP/SSH). UDP is connectionless and faster but doesn't guarantee delivery (used for DNS/Streaming)." },
-        { c: 'cloud', q: "How would you secure an S3 bucket in AWS?", a: "I would ensure Public Access is blocked, enable server-side encryption (KMS), and use Bucket Policies to enforce TLS-only access. During my internship, I audited these using IAM Policy Simulator." },
-        { c: 'behavioral', q: "Tell me about a time you worked on a complex project.", a: "I built an ELK Stack lab to monitor my home network. The challenge was normalizing Windows logs. I solved this by using Logstash Grok filters, which taught me the importance of clean data in security analysis." },
-        { c: 'tmx', q: "What do you know about TMX Group's security needs?", a: "As a financial exchange, TMX is a high-value target for state-sponsored and criminal actors. Uptime and low-latency are critical, so security must be transparent but robust. You follow strict compliance like OSFI and SOC2." }
+       // SOC OPERATIONS (1-15)
+       { c: 'soc', q: "What is the primary role of a SIEM in a SOC?", a: "SIEM provides centralized logging and real-time correlation. It identifies patterns across firewalls, servers, and endpoints that individual devices miss. Example: Detecting a brute-force attack moving laterally." },
+       { c: 'soc', q: "Difference between IDS and IPS?", a: "IDS is passive (detects and alerts), IPS is active (detects and blocks traffic). Junior analysts often tune IDS signatures to reduce false positives." },
+       { c: 'soc', q: "What is a 'False Positive'?", a: "Benign activity flagged as malicious. This leads to alert fatigue. Analysts must verify alerts against context before taking action." },
+       { c: 'soc', q: "Explain log normalization.", a: "Converting logs from different formats (JSON, Syslog) into a common schema so you can search 'source_ip' across all devices simultaneously." },
+       { c: 'soc', q: "Critical Windows Event IDs?", a: "4624 (Success Login), 4625 (Failed Login), 4720 (User Created), 4688 (Process Execution). These are the pillars of Windows monitoring." },
+       { c: 'soc', q: "What is 'Defense in Depth'?", a: "Layered security (Network, Host, Application, Data). If one layer fails (e.g., Firewall), another layer (e.g., EDR) should catch the threat." },
+       { c: 'soc', q: "What is a 'True Positive'?", a: "An alert that correctly identifies a real security threat. Finding Mimikatz in memory logs is a high-fidelity True Positive." },
+       { c: 'soc', q: "What is DNS Tunneling?", a: "Using DNS requests to exfiltrate data or communicate with a C2 server. Look for high volumes of DNS queries or long, random subdomains." },
+       { c: 'soc', q: "Explain the TCP 3-Way Handshake.", a: "SYN -> SYN/ACK -> ACK. In a SOC, seeing many SYNs without ACK might indicate a SYN Flood (DDoS) or Nmap scanning." },
+       { c: 'soc', q: "What port does RDP use?", a: "TCP 3389. It is frequently attacked via brute-force. It should never be exposed directly to the internet." },
+       { c: 'soc', q: "What is 'Alert Fatigue'?", a: "Analysts becoming desensitized to alerts due to over-notification. Mitigation: Better tuning and automation (SOAR)." },
+       { c: 'soc', q: "What is 'Log Aggregation'?", a: "The process of collecting logs from diverse systems into a single searchable index (e.g., Elasticsearch Index)." },
+       { c: 'soc', q: "Common Linux logs?", a: "/var/log/auth.log (logins), /var/log/syslog (system events), /var/log/apache2/access.log (web hits)." },
+       { c: 'soc', q: "What is a 'Zero-Day'?", a: "A vulnerability with no known patch or signature. Detection usually relies on heuristic behavior monitoring." },
+       { c: 'soc', q: "What is 'Metadata' in logs?", a: "Data about the event (timestamp, source IP, username) rather than the raw data itself. Metadata is key for fast SIEM searching." },
+
+       // INCIDENT RESPONSE (16-30)
+       { c: 'ir', q: "Explain the NIST IR Lifecycle.", a: "1. Preparation, 2. Detection & Analysis, 3. Containment/Eradication/Recovery, 4. Post-Incident Activity." },
+       { c: 'ir', q: "How to handle a phishing email report?", a: "1. Capture headers/URLs. 2. Verify URL/Hash (VirusTotal). 3. Identify other recipients. 4. Block sender/URL and delete email from all mailboxes." },
+       { c: 'ir', q: "Containment vs. Eradication?", a: "Containment: Isolating host to stop spread (e.g., shut port). Eradication: Removing the threat (e.g., delete malware, patch vuln)." },
+       { c: 'ir', q: "What is an IoC?", a: "Indicator of Compromise. Evidence of a breach: File hashes, IP addresses, Registry keys, or domain names." },
+       { c: 'ir', q: "Describe 'Lateral Movement'.", a: "An attacker moving through a network (e.g., via SMB or RDP) once they've gained an initial foothold." },
+       { c: 'ir', q: "What is 'Threat Hunting'?", a: "Proactive searching for threats that evaded existing automated detections. Prototypical hunting: 'Show me all powershell.exe instances with encoded commands'." },
+       { c: 'ir', q: "What is the 'Cyber Kill Chain'?", a: "Stages of an attack: Recon, Weaponization, Delivery, Exploitation, Installation, C2, Actions on Objectives." },
+       { c: 'ir', q: "Explain the 'Diamond Model'.", a: "Framework mapping Adversary, Capability, Infrastructure, and Victim. Useful for high-level threat intel." },
+       { c: 'ir', q: "What is 'Beaconing'?", a: "Malware periodically reaching out to a Command & Control (C2) server. Look for rhythmic gaps in network traffic." },
+       { c: 'ir', q: "What is 'Lessons Learned'?", a: "Phase 4 of IR. Reviewing the timeline to identify gaps in detection and response to prevent recurrence." },
+       { c: 'ir', q: "How to detect Brute Force in SIEM?", a: "Correlation rule: Trigger if X failed logins occur for a single account within Y minutes, followed by 1 successful login." },
+       { c: 'ir', q: "What is 'Data Exfiltration'?", a: "The unauthorized transfer of sensitive data outside the network. Look for large outbound traffic bursts to unknown IPs." },
+       { c: 'ir', q: "Difference between Playbook and Runbook?", a: "Playbook: Strategic workflow for an incident type (Phishing). Runbook: Specific technical steps/commands to execute." },
+       { c: 'ir', q: "What is 'Root Cause Analysis'?", a: "Determining 'How' and 'Why' the incident happened (e.g., missing patch, weak password) to address the underlying issue." },
+       { c: 'ir', q: "What is IR 'Triage'?", a: "Categorizing alerts by severity (High/Med/Low) to ensure critical threats are handled first." },
+
+       // NETWORKING (31-45)
+       { c: 'net', q: "What is a DMZ?", a: "Demilitarized Zone. A segment between the public internet and private network for external-facing services like Web/Email." },
+       { c: 'net', q: "Explain ARP Spoofing.", a: "Attacker maps their MAC address to a legitimate IP to intercept local traffic. Mitigated by Dynamic ARP Inspection (DAI)." },
+       { c: 'net', q: "Layers of the OSI Model?", a: "Physical, Data Link, Network, Transport, Session, Presentation, Application. SOC analysts mostly work on Layers 3, 4, and 7." },
+       { c: 'net', q: "Difference between Hub and Switch?", a: "Hub is 'dumb' (broadcasts everywhere). Switch is 'smart' (sends to specific MAC addresses). Reduces collisions/sniffing." },
+       { c: 'net', q: "What is a 'Next-Gen Firewall' (NGFW)?", a: "Combines traditional firewalling with Layer 7 inspection, IDS/IPS, and Identity-awareness." },
+       { c: 'net', q: "Explain DNSSEC.", a: "Adds digital signatures to DNS records to ensure the user is directed to the correct server and not a spoofed one." },
+       { c: 'net', q: "What is BGP Hijacking?", a: "Rerouting traffic across the internet by announcing false IP prefixes. Can lead to mass interception or DoS." },
+       { c: 'net', q: "What is a VPN?", a: "Virtual Private Network. Encrypted tunnel for remote access. Look for 'Impossible Travel' (logins from two cities in 1 hour) in VPN logs." },
+       { c: 'net', q: "Difference between TCP and UDP?", a: "TCP is connection-oriented (reliable). UDP is connectionless (fast). DNS uses UDP for queries but TCP for zone transfers." },
+       { c: 'net', q: "What is 'Port Mirroring' (SPAN)?", a: "Configuring a switch to send a copy of all traffic to a specific port for monitoring with an IDS or Wireshark." },
+       { c: 'net', q: "What is DHCP Snooping?", a: "Prevents rogue DHCP servers from assigning IPs to clients on the network." },
+       { c: 'net', q: "Explain 'NAT'.", a: "Network Address Translation. Mapping private IPs to a public IP. Provides basic security by hiding internal network topology." },
+       { c: 'net', q: "What is a 'VLAN'?", a: "Logical segmentation of a network. Keeps Guest traffic away from Admin traffic even on the same physical switch." },
+       { c: 'net', q: "What is 'SSL Termination'?", a: "Decrypting traffic at a load balancer or firewall to inspect it before passing it to internal servers." },
+       { c: 'net', q: "Protocols on Port 80, 443, 22, 53?", a: "80: HTTP, 443: HTTPS, 22: SSH, 53: DNS." },
+
+       // CLOUD SECURITY (46-60)
+       { c: 'cloud', q: "AWS Shared Responsibility Model?", a: "AWS is responsible for security 'of' the cloud (infrastructure). Customer responsible for security 'in' the cloud (data, IAM, encryption)." },
+       { c: 'cloud', q: "What is AWS GuardDuty?", a: "Threat detection service that monitors logs (CloudTrail, VPC Flow, DNS) for malicious activity using ML and threat intel." },
+       { c: 'cloud', q: "Security Group vs. NACL?", a: "Security Group: Stateful, instance level. NACL: Stateless, subnet level." },
+       { c: 'cloud', q: "What is CloudTrail?", a: "Audit service that logs all API calls in an AWS account. Essential for forensic investigation in the cloud." },
+       { c: 'cloud', q: "How to secure an S3 bucket?", a: "Enable 'Block Public Access', use IAM policies, enable Server-Side Encryption (SSE), and use CloudTrail to monitor access." },
+       { c: 'cloud', q: "What is 'Infrastructure as Code' (IaC) security?", a: "Scanning Terraform/CloudFormation code for misconfigurations (e.g., hardcoded keys, open ports) before deployment." },
+       { c: 'cloud', q: "What is AWS Shield?", a: "Managed DDoS protection. 'Standard' is free for all; 'Advanced' provides higher limits and cost protection." },
+       { c: 'cloud', q: "What is 'KMS'?", a: "Key Management Service. Central place to manage encryption keys used by AWS services for data at rest." },
+       { c: 'cloud', q: "What are VPC Flow Logs?", a: "Logs that capture IP traffic information for network interfaces in your VPC. Used to detect unauthorized outbound connections." },
+       { c: 'cloud', q: "What is Azure Defender?", a: "Unified security management system for cloud workloads (VMs, DBs) providing vulnerability scanning and threat protection." },
+       { c: 'cloud', q: "Cloud 'Misconfiguration' risk?", a: "Incorrect settings (like open S3 buckets) are the #1 cause of cloud breaches, often more dangerous than actual malware." },
+       { c: 'cloud', q: "What is a 'Cloud Access Security Broker' (CASB)?", a: "Software between users and cloud apps that enforces security policies (e.g., preventing sensitive data upload to personal OneDrive)." },
+       { c: 'cloud', q: "Difference between SaaS, PaaS, IaaS?", a: "IaaS gives most control (VMs). PaaS is for apps (Beanstalk). SaaS is 'ready to use' (O365)." },
+       { c: 'cloud', q: "What is 'IAM' in the Cloud?", a: "Managing users, groups, and roles. Best practice: Use roles for services (like EC2) instead of static IAM user keys." },
+       { c: 'cloud', q: "What is 'Serverless' security?", a: "Targeting the logic/code of Lambda functions. Least privilege is critical to prevent a compromised function from dumping entire DBs." },
+
+       // IAM (61-75)
+       { c: 'iam', q: "What is Multi-Factor Authentication (MFA)?", a: "Something you know (password) + Something you have (OTP/FIDO key) + Something you are (biometrics)." },
+       { c: 'iam', q: "Difference: Authentication vs. Authorization?", a: "AuthN: 'Who are you?' (Login). AuthR: 'What can you do?' (Permissions)." },
+       { c: 'iam', q: "What is RBAC?", a: "Role-Based Access Control. Assigning permissions to roles (e.g., 'Analyst') rather than individual users." },
+       { c: 'iam', q: "What is 'Least Privilege'?", a: "Giving only the minimum access needed for a job. Prevents horizontal spread if an account is compromised." },
+       { c: 'iam', q: "What is 'Privileged Access Management' (PAM)?", a: "Securing powerful accounts (Domain Admin) using checkout systems, MFA, and session recording (e.g., CyberArk)." },
+       { c: 'iam', q: "What is a 'Service Account'?", a: "Account used by an application to run processes. They should have non-expiring passwords but extremely restricted permissions." },
+       { c: 'iam', q: "What is Single Sign-On (SSO)?", a: "Log in once, access many apps. Uses protocols like SAML or OIDC. Reduces password fatigue/reuse." },
+       { c: 'iam', q: "What is 'Just-in-Time' (JIT) provisioning?", a: "Accounts are created or elevated only when requested and expire automatically." },
+       { c: 'iam', q: "What is 'Identity Federation'?", a: "Linking an identity across different systems (e.g., using your corporate ID to log into AWS)." },
+       { c: 'iam', q: "Risk of 'Orphaned Accounts'?", a: "Accounts of former employees that weren't deleted. A primary target for attackers because they aren't monitored." },
+       { c: 'iam', q: "What is a 'Password Vault'?", a: "Secure storage for passwords. Best practice: Use unique, long passwords for every site, managed by a vault." },
+       { c: 'iam', q: "What is 'Conditional Access'?", a: "Allowing access only if conditions are met (e.g., 'User must be on a managed device and in Canada' to access TMX data)." },
+       { c: 'iam', q: "What is 'Privilege Escalation'?", a: "Exploiting a bug to gain higher access levels (e.g., User to Admin). SOCs watch for unusual 'sudo' or 'RunAs' activity." },
+       { c: 'iam', q: "What is IAM 'Governance'?", a: "Regular reviews to ensure users still need the access they have (Access Certification)." },
+       { c: 'iam', q: "Explain 'Separation of Duties'.", a: "Requirement that complex tasks involve more than one person (e.g., the person who requests access can't be the one who approves it)." },
+
+       // VULNERABILITY MANAGEMENT (76-90)
+       { c: 'vuln', q: "What is a Vulnerability Assessment?", a: "Automated process to find security holes (e.g., Nessus Scan). Results in a list of 'potential' issues." },
+       { c: 'vuln', q: "Assessment vs. Penetration Test?", a: "Assessment: 'I see a hole.' Pen Test: 'I am jumping through the hole to see what I can steal'." },
+       { c: 'vuln', q: "What is CVSS?", a: "Common Vulnerability Scoring System. 0-10 scale. SOC focus: 7.0+ (High/Critical)." },
+       { c: 'vuln', q: "What is 'Patch Management'?", a: "Phase of fixing vulnerabilities by applying updates. SOC role: Identifying systems missing critical patches." },
+       { c: 'vuln', q: "What is a 'False Negative' in Scanning?", a: "System has a vulnerability but the scanner missed it. Risk: Huge blind spot." },
+       { c: 'vuln', q: "What is 'Risk-Based' Vulnerability Management?", a: "Prioritizing fixes based on 'Real-world exploitability' and 'Asset importance' rather than just CVSS." },
+       { c: 'vuln', q: "What is 'CVE'?", a: "Common Vulnerabilities and Exposures. A unique identifier for a vulnerability (e.g., CVE-2021-44228 for Log4Shell)." },
+       { c: 'vuln', q: "Credentialed vs. Non-Credentialed Scan?", a: "Credentialed logs in to find internal configs (more accurate). Non-credentialed sees only what's exposed on the network." },
+       { c: 'vuln', q: "What is a 'Zero-Day' in this context?", a: "A vulnerability that the developer is unaware of, meaning there is 'Zero days' to fix it before exploitation." },
+       { c: 'vuln', q: "What is 'Vulnerability Triage'?", a: "Determining if a vulnerability is a real threat to YOUR specific environment based on compensating controls." },
+       { c: 'vuln', q: "What is an 'Exploit Kit'?", a: "A collection of exploits used to deliver malware automatically to vulnerable systems." },
+       { c: 'vuln', q: "Impact of 'Default Credentials'?", a: "One of the easiest vulnerabilities to exploit (e.g., admin/admin on a router)." },
+       { c: 'vuln', q: "What is 'Vulnerability Aging'?", a: "Tracking how long a known vulnerability has remained unpatched in the environment." },
+       { c: 'vuln', q: "Explain 'Hardening'.", a: "Reducing the attack surface by disabling unnecessary services, closing ports, and configuring security settings." },
+       { c: 'vuln', q: "What is 'Asset Inventory' in Vuln Management?", a: "You cannot secure what you don't know exists. A complete asset list is the foundation of any vuln program." },
+
+       // EDR/XDR (91-105)
+       { c: 'edr', q: "What is EDR?", a: "Endpoint Detection and Response. High-visibility agent on a host that records processes, registry changes, and network connections." },
+       { c: 'edr', q: "EDR vs. Traditional AV?", a: "AV looks for signatures. EDR looks for behavior (e.g., 'Why is Notepad.exe reaching out to the internet?')." },
+       { c: 'edr', q: "What is 'Process Hollowing'?", a: "Malware starting a legitimate process and injecting its code into it. EDR detects this via memory monitoring." },
+       { c: 'edr', q: "What is 'Fileless Malware'?", a: "Malware that lives only in RAM (e.g., malicious PowerShell scripts). EDR tracks the script execution since there is no file." },
+       { c: 'edr', q: "EDR 'Isolation' feature?", a: "Killing the network stack of a compromised workstation while maintaining the EDR connection for forensics." },
+       { c: 'edr', q: "What is 'Heuristic' Detection?", a: "Using rules to find unknown malware based on typical attacker 'tricks' (e.g., mass file renaming = Ransomware)." },
+       { c: 'edr', q: "What is XDR?", a: "Extended Detection and Response. Correlates data from Endpoint, Network, Cloud, and Email in one view." },
+       { c: 'edr', q: "EDR 'Rollback'?", a: "Ability to restore a machine to its pre-infected state (commonly found in tools like SentinelOne)." },
+       { c: 'edr', q: "How to detect Ransomware in EDR?", a: "Monitoring for rapid file encryption activity, deletion of Shadow Copies (vssadmin), and ransom note creation." },
+       { c: 'edr', q: "What is 'Living off the Land' (LotL)?", a: "Using built-in Windows tools (PowerShell, WMI, net.exe) for malicious purposes. EDR is the main way to catch this." },
+       { c: 'edr', q: "What is 'Anti-Tamper'?", a: "Security that prevents a local admin or malware from stopping the EDR agent." },
+       { c: 'edr', q: "Explain 'WMI Exploitation'.", a: "Using Windows Management Instrumentation for persistence or lateral movement. EDR logs WMI queries." },
+       { c: 'edr', q: "What are 'Detections' vs. 'Alerts' in some EDRs?", a: "Detections are raw interesting events. Alerts are verified malicious events that require analyst human review." },
+       { c: 'edr', q: "Threat Intel in EDR?", a: "Using known 'bad' hash lists to automatically block malware as soon as it touches the disk." },
+       { c: 'edr', q: "Memory Forensics in EDR?", a: "Scanning the active RAM of a host for injected code or dumped credentials without needing a full reboot." },
+
+       // GRC & NIST (106-120)
+       { c: 'grc', q: "What is NIST CSF?", a: "National Institute of Standards and Technology Cybersecurity Framework. Core functions: Identify, Protect, Detect, Respond, Recover." },
+       { c: 'grc', q: "What is GDPR?", a: "Privacy law protecting EU citizens. Requires reporting data breaches within 72 hours." },
+       { c: 'grc', q: "Compliance vs. Security?", a: "Compliance is 'checking boxes' for auditors. Security is actually 'locking doors'. You can be compliant but not secure." },
+       { c: 'grc', q: "What is a 'Data Privacy Impact Assessment' (DPIA)?", a: "Analyzing how a new project will affect user privacy before it launches." },
+       { c: 'grc', q: "NIST 800-53?", a: "Huge catalog of security controls for federal systems. Many enterprises use it as a gold standard." },
+       { c: 'grc', q: "What is 'Risk Management'?", a: "Identifying risks, calculating impact/likelihood, and deciding to Accept, Avoid, Mitigate, or Transfer them." },
+       { c: 'grc', q: "What is 'PCI-DSS'?", a: "Security standard for organizations that handle credit card data. Requires quarterly vuln scans." },
+       { c: 'grc', q: "What is 'SOC2'?", a: "Audit standard for service providers (like TMX). Focuses on Security, Availability, Processing Integrity, Confidentiality, and Privacy." },
+       { c: 'grc', q: "Difference between Policy and Procedure?", a: "Policy: 'Staff must use strong passwords.' Procedure: 'How to change your password in Windows'." },
+       { c: 'grc', q: "What is 'Business Continuity Planning' (BCP)?", a: "How the business stays running during a disaster (e.g., failover sites)." },
+       { c: 'grc', q: "What is 'Disaster Recovery' (DR)?", a: "Technical steps to restore systems after a failure (e.g., restoring from backups)." },
+       { c: 'grc', q: "What is 'HIPAA'?", a: "Law protecting healthcare data in the USA. Requires strict access controls." },
+       { c: 'grc', q: "Explain 'Governance'.", a: "Overseeing security strategy and ensuring it aligns with business goals and laws." },
+       { c: 'grc', q: "What is 'Third-Party Risk'?", a: "Security risks introduced by vendors/suppliers. SOCs should monitor vendor access points." },
+       { c: 'grc', q: "Security Awareness Training?", a: "Teaching employees to recognize phishing. Often cited as the #1 way to reduce successful hacks." },
+
+       // TMX & RESUME (121-135)
+       { c: 'tmx', q: "What do you know about TMX Group?", a: "Leading operator of global exchanges (TSX, Montreal Exchange). Focus on capital markets, trading, and mission-critical financial infrastructure." },
+       { c: 'tmx', q: "Why TMX Group?", a: "I want to work in a high-stakes environment where security is a tier-1 priority. TMX's role in the global economy makes its cybersecurity posture fascinating." },
+       { c: 'tmx', q: "Explain your SOC Home Lab project.", a: "I set up an ELK Stack (SIEM) to monitor my own network. I used Winlogbeat to ingest logs and created dashboards for failed SSH attempts." },
+       { c: 'tmx', q: "Describe your AWS project.", a: "I deployed a secure web app using EC2, RDS, and S3. I secured it using WAF, CloudTrail, and restricted IAM roles to follow least privilege." },
+       { c: 'tmx', q: "How would you secure a stock exchange's data?", a: "Maximum network segmentation, pervasive encryption, strict IAM MFA, and real-time monitoring of high-value database servers." },
+       { c: 'tmx', q: "Experience with SIEM tools?", a: "I've used Elasticsearch/Kibana for my projects and am familiar with the concepts of Splunk/LogRhythm (searching, dashboarding, alert tuning)." },
+       { c: 'tmx', q: "Experience with EDR?", a: "I have experimented with Wazuh (open source EDR/XDR). I learned how to use it to monitor file integrity and detect rootkits." },
+       { c: 'tmx', q: "How do you stay updated in Cyber?", a: "I follow 'The Hacker News', 'Krebs on Security', and listen to 'Darknet Diaries'. I also practice on TryHackMe." },
+       { c: 'tmx', q: "Describe a project where you solved a technical problem.", a: "Talk about a specific bug you found in your lab or during your AWS deployment and how you fixed it." },
+       { c: 'tmx', q: "What certifications are you pursuing?", a: "CompTIA Security+ (standard foundation) or CySA+ (focused on analyst skills)." },
+       { c: 'tmx', q: "How would you handle a colleague breaking security policy?", a: "Explain kindly that it's a risk, but if it's a critical violation, follow the organization's reporting procedure." },
+       { c: 'tmx', q: "Your understanding of 'Junior' role expectations?", a: "Being a sponge for knowledge, handling level-1 triage precisely, and escalating incidents correctly to level-2 analysts." },
+       { c: 'tmx', q: "What is 'Integrity' in the CIA triad for TMX?", a: "Ensuring trade data isn't altered. A single dollar change in a stock price via a hack could cause financial chaos." },
+       { c: 'tmx', q: "What is 'Availability' for TMX?", a: "Ensuring trading platforms are always online. Downtime at TMX means millions of dollars in lost market activity." },
+       { c: 'tmx', q: "How do you handle repetitive tasks?", a: "I look for ways to automate them. If I have to do the same SIEM search every morning, I'll try to script it or create a persistent dashboard." },
+
+       // LINUX & ADVANCED (136-150)
+       { c: 'linux', q: "What is 'grep' used for?", a: "Global Regular Expression Print. Searching for strings in files. analyst use: 'grep -r \"4625\" /var/log/logs' to find failed logins." },
+       { c: 'linux', q: "Command to change file permissions?", a: "chmod. Example: 'chmod 600 secret.txt' makes it readable only by the owner." },
+       { c: 'linux', q: "Difference between 'sudo' and 'su'?", a: "Sudo runs a single command as root. Su switches the shell to root permanently until exited. Sudo is preferred for auditing." },
+       { c: 'linux', q: "What does 'iptables' do?", a: "Command-line utility for configuring the Linux kernel firewall. Junior analysts use it to block specific malicious source IPs." },
+       { c: 'linux', q: "Check active network connections in Linux?", a: "netstat -tulnp (shows ports, addresses, and process IDs)." },
+       { c: 'linux', q: "What is a 'Cron Job' security risk?", a: "Attackers add malicious scripts to crontab to gain persistence. SOC analysts audit crontab for unusual tasks." },
+       { c: 'linux', q: "Difference between 'cat' and 'tail'?", a: "Cat prints whole file. Tail prints last 10 lines. 'tail -f' is used to watch live logs." },
+       { c: 'linux', q: "What is the '/etc/passwd' file?", a: "Stores user account info. The '/etc/shadow' file is where the actual encrypted passwords live." },
+       { c: 'linux', q: "What is 'Nmap'?", a: "Network Mapper. Tool for vulnerability scanning and discovery. Essential for mapping the attack surface." },
+       { c: 'linux', q: "What is 'Wireshark'?", a: "Packet analyzer. Used to look at actual data moving on the wire to troubleshoot or find clear-text credentials." },
+       { c: 'linux', q: "What is 'Metasploit'?", a: "Exploitation framework. Used by pentesters (and hackers) to launch attacks against known vulnerabilities." },
+       { c: 'behav', q: "How do you handle pressure during an incident?", a: "Focus on the process/playbook. Speed is important, but accuracy avoids 'fat-fingered' mistakes that cause downtime." },
+       { c: 'behav', q: "Conflict with a team member?", a: "Keep it professional. Focus on the best outcome for the security of the company, not personal egos." },
+       { c: 'behav', q: "Where do you see yourself in 5 years?", a: "A Senior SOC Analyst or Security Engineer, hopefully with specialized knowledge in Cloud Incidents." },
+       { c: 'behav', q: "Why should we hire YOU?", a: "I have the technical foundation (projects), the curiosity to learn, and I understand the critical nature of TMX's infrastructure." }
     ];
 
-    const container = document.getElementById('q-container');
-    qData.forEach(item => {
-        const card = document.createElement('div');
-        card.className = `q-card cat-${item.c}`;
-        card.setAttribute('data-category', item.c);
-        card.innerHTML = `
-            <button class="q-btn" onclick="toggleAns(this)">
-                <span>${item.q} <span class="cat-tag">${item.c.toUpperCase()}</span></span>
-                <span>+</span>
-            </button>
-            <div class="q-ans">${item.a}</div>
-        `;
-        container.appendChild(card);
-    });
+    function renderQs() {
+        const container = document.getElementById('q-container');
+        container.innerHTML = '';
+        qData.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = `q-card cat-${item.c}`;
+            card.setAttribute('data-category', item.c);
+            
+            card.innerHTML = `
+                <button class="q-btn" onclick="toggleAns(this)">
+                    <span>Q${index+1}. ${item.q} <span class="cat-tag">${item.c.toUpperCase()}</span></span>
+                    <span class="indicator">+</span>
+                </button>
+                <div class="q-ans">
+                    <strong>Answer:</strong><br>
+                    ${item.a}
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
 
     function toggleAns(btn) {
         const ans = btn.nextElementSibling;
-        const ind = btn.querySelectorAll('span')[1];
+        const indicator = btn.querySelector('.indicator');
         if(ans.style.display === 'block') {
             ans.style.display = 'none';
-            ind.textContent = '+';
-            btn.style.color = "var(--text-main)";
+            indicator.textContent = '+';
         } else {
             ans.style.display = 'block';
-            ind.textContent = '-';
-            btn.style.color = "var(--highlight)";
+            indicator.textContent = '-';
         }
     }
 
     function filterQs() {
-        const q = document.getElementById('search').value.toLowerCase();
-        const cat = document.getElementById('cat-filter').value;
-        document.querySelectorAll('.q-card').forEach(card => {
-            const text = card.textContent.toLowerCase();
-            const cCat = card.getAttribute('data-category');
-            card.style.display = (text.includes(q) && (cat === 'all' || cCat === cat)) ? 'block' : 'none';
+        const term = document.getElementById('srch').value.toLowerCase();
+        const cards = document.querySelectorAll('.q-card');
+        let count = 0;
+        cards.forEach(card => {
+            const txt = card.textContent.toLowerCase();
+            if(txt.includes(term)) {
+                card.style.display = 'block';
+                count++;
+            } else {
+                card.style.display = 'none';
+            }
         });
+        document.getElementById('qCount').textContent = count + ' Questions';
     }
 
-    const btt = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => btt.style.display = window.scrollY > 300 ? 'block' : 'none');
+    function filterCat(cat, btn) {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cards = document.querySelectorAll('.q-card');
+        let count = 0;
+        cards.forEach(card => {
+            if(cat === 'all' || card.getAttribute('data-category') === cat) {
+                card.style.display = 'block';
+                count++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        document.getElementById('qCount').textContent = count + ' Questions';
+    }
+
+    renderQs();
 </script>
+
 </body>
 </html>
