@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHNOLOGY PREP GUIDE - CYBER SECURITY</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --bg-color: #21201e;
+            --card-bg: #292825;
+            --accent: #df7c58;
+            --accent-secondary: #42413e;
+            --text-main: #e8e4dc;
+            --text-muted: #9b9a97;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1 { font-family: 'Playfair Display', serif; font-weight: 500; }
+        .tech-card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--accent-secondary); transition: transform 0.2s; }
+        .tech-card:hover { transform: translateY(-2px); }
+        h3 { color: var(--accent); margin-top: 0; border-bottom: 1px solid var(--accent-secondary); padding-bottom: 10px; }
+        .tech-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .tech-item { background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent); }
+        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 12px 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); }
+        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Intro</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Projects</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Q Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn active">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> TECHNOLOGY PREPARATION GUIDE</h1>
+        <p>Mastering the tools for the TMX Cybersecurity Architect role.</p>
+    </header>
+
+    <div class="tech-card">
+        <h3>SOC MONITORING & SIEM</h3>
+        <p>Fundamental across TMX's Information Security Office.</p>
+        <div class="tech-list">
+            <div class="tech-item"><strong>ELK Stack:</strong> ElasticSearch (Storage), Logstash (Parser), Kibana (Visualization). centralize all log telemetry.</div>
+            <div class="tech-item"><strong>Splunk:</strong> High-performance log parsing and searching. Used for massive datasets in financial sectors.</div>
+        </div>
+    </div>
+
+    <div class="tech-card">
+        <h3>ENDPOINT PROTECTION (EDR)</h3>
+        <p>Securing work-from-home and server endpoints.</p>
+        <div class="tech-list">
+            <div class="tech-item"><strong>EDR Tools:</strong> Standard across the board for real-time memory and process monitoring (e.g., CrowdStrike, SentinelOne).</div>
+            <div class="tech-item"><strong>Antivirus:</strong> Traditional signature-based detection, supplemented by EDR's behavioral analysis.</div>
+        </div>
+    </div>
+
+    <div class="tech-card">
+        <h3>NETWORK DEFENSE (IDS/IPS & FIREWALLS)</h3>
+        <p>Controlling the perimeter for trade security.</p>
+        <div class="tech-list">
+            <div class="tech-item"><strong>IDS/IPS:</strong> Monitoring and blocking malicious packet headers. Snort is a key open-source reference.</div>
+            <div class="tech-item"><strong>WAF:</strong> Web Application Firewall. Protects trade portals from SQL Injection and XSS at Layer 7.</div>
+        </div>
+    </div>
+
+    <div class="tech-card">
+        <h3>CLOUD SECURITY (AWS/AZURE)</h3>
+        <p>Monitoring TMX's modernized cloud footprint.</p>
+        <div class="tech-list">
+            <div class="tech-item"><strong>CloudTrail:</strong> The definitive audit log for AWS. Shows exactly who made every API call.</div>
+            <div class="tech-item"><strong>GuardDuty:</strong> Managed threat detection using machine-learning to detect anomalies like Bitcoin mining or unauthorized access.</div>
+        </div>
+    </div>
+
+</div>
+
+<footer>Prepared for Ravi Kiran Kambhampati | TMX Group Technology Phase</footer>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELF-INTRODUCTION & KEY ANSWERS - CYBER SECURITY</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --bg-color: #21201e;
+            --card-bg: #292825;
+            --accent: #df7c58;
+            --accent-secondary: #42413e;
+            --text-main: #e8e4dc;
+            --text-muted: #9b9a97;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4, 5 { font-family: 'Playfair Display', ui-serif, Georgia, serif; color: var(--text-main); font-weight: 500; margin-top: 0; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        .card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--accent-secondary); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+        .highlight-box { border-left: 5px solid var(--accent); background-color: rgba(223, 124, 88, 0.1); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8; }
+        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 12px 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); }
+        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; white-space: nowrap; }
+        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: var(--text-muted); }
+        strong { color: var(--text-main); }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 12px; border: 1px solid var(--accent-secondary); text-align: left; }
+        th { background-color: var(--accent-secondary); color: var(--text-main); }
+        .use-phrase { color: var(--success); font-weight: bold; }
+        .avoid-phrase { color: var(--danger); font-weight: bold; }
+        footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; }
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; padding: 12px 18px; border-radius: 24px; cursor: pointer; z-index: 99; font-weight: bold; border: none; }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn active">Self Introduction</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Project Deep Dive</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Questions Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Study Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> SELF-INTRODUCTION & KEY ANSWERS</h1>
+        <p>Tailored for Cybersecurity Operations Analyst role at TMX Group.</p>
+    </header>
+
+    <div class="card">
+        <h2>1. THE 60-SECOND INTRO (Use if they say: "Give us a brief overview")</h2>
+        <div class="highlight-box">
+            "Good morning/afternoon! I'm Ravi Kiran Kambhampati, a dedicated Cybersecurity professional with a strong foundation in SOC monitoring and threat detection based in Toronto. I've spent the last 2 years specializing across two Post-Graduate diplomas at York University: <strong>Cybersecurity Operations and Cloud Operations.</strong> I believe that in today's environment, a good security analyst must also understand the infrastructure they are protecting.<br><br>
+            During my Cloud Engineer internship at TefoLogic, I managed IAM least-privilege policies, monitored AWS CloudTrail for unauthorized access attempts, and resolved production incidents. I've also built a comprehensive <strong>SOC Threat Detection Lab</strong> using the ELK stack, where I parsed Linux/Windows logs to identify brute-force attacks and abnormal user behavior.<br><br>
+            I'm currently finalizing my prep for the CompTIA Security+ certification. What brings me to TMX is the critical nature of your financial systems. I'm eager to apply my SIEM knowledge and automation skills (Python/PowerShell) to help TMX maintain a secure and resilient exchange environment."
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>2. WHY TMX Group & WHY SOC?</h2>
+        <ul>
+            <li><strong>The Core of the Economy:</strong> "TMX isn't just a business; it's the financial engine of Canada. Protecting it from threat actors is a high-stakes, mission-critical job that aligns with my background."</li>
+            <li><strong>Hybrid Environment:</strong> "I know TMX is cloud-first but also maintains a hybrid footprint. My education in both CyberOps and CloudOps makes me uniquely comfortable monitoring across AWS and on-prem."</li>
+            <li><strong>Continuous Learning:</strong> "TMX is known for its supportive culture. I'm looking for an environment where I can contribute to the SOC while learning from senior security engineers."</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>3. WHY SHOULD WE HIRE YOU?</h2>
+        <ul>
+            <li><strong>The Builder-Analyst Bridge:</strong> "I don't just 'read' alerts; I understand the underlying system. My internship experience writing Terraform and monitoring CloudTrail means I can talk to the engineering teams effectively during triages."</li>
+            <li><strong>Automation First Mindset:</strong> "I'm proficient in Python and PowerShell. I focus on automating routine security tasks to reduce noise and allow the team to focus on high-priority threats."</li>
+            <li><strong>Dedication:</strong> "Completing two full Post-Graduate diplomas in specialized fields demonstrates my commitment to mastering the modern security landscape."</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>4. BIGGEST WEAKNESS</h2>
+        <p><strong>The Weakness:</strong> "Trying to handle everything alone."</p>
+        <p><strong>The Script:</strong> "Early in my York University labs, I used to try to solve every complex log issue or networking bug myself to prove I could do it. I realized that in a real SOC, <strong>speed of containment is more important than solo troubleshooting.</strong> Now, I focus on the 20-minute rule: if I haven't cracked a complex triage issue in 20 minutes, I prepare my findings and escalate/collaborate with senior members. This ensures the organization stays protected and I learn faster."</p>
+    </div>
+
+    <div class="card">
+        <h2>5. KEY PHRASES & DOs/DON'Ts</h2>
+        <table>
+            <tr>
+                <th>Use These Phrases <span class="use-phrase">(Yes)</span></th>
+                <th>Avoid These Phrases <span class="avoid-phrase">(No)</span></th>
+            </tr>
+            <tr>
+                <td>"In my ELK Stack SOC Lab..."</td>
+                <td>"In a class project..."</td>
+            </tr>
+            <tr>
+                <td>"I triaged an unauthorized AWS access attempt..."</td>
+                <td>"I saw a mistake on AWS..."</td>
+            </tr>
+            <tr>
+                <td>"I aim to automate this repetitive workflow..."</td>
+                <td>"I will do this manually..."</td>
+            </tr>
+            <tr>
+                <td>"My approach to log normalization was..."</td>
+                <td>"I fixed the logs..."</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<button id="back-to-top">↑ Top</button>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | Cybersecurity Analyst Interview | TMX Group
+</footer>
+
+<script>
+    const backToTop = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+        backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
+</body>
+</html>

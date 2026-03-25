@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-DAY INTENSIVE STUDY SCHEDULE - CYBER SECURITY</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --bg-color: #21201e;
+            --card-bg: #292825;
+            --accent: #df7c58;
+            --accent-secondary: #42413e;
+            --text-main: #e8e4dc;
+            --text-muted: #9b9a97;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1 { font-family: 'Playfair Display', serif; font-weight: 500; }
+        .day-card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--accent-secondary); transition: transform 0.2s; }
+        .day-card:hover { transform: translateY(-2px); }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 12px; border: 1px solid var(--accent-secondary); text-align: left; }
+        th { background: var(--accent-secondary); color: var(--text-main); width: 20%; }
+        td { color: var(--text-muted); }
+        .priority-high { color: #e74c3c; font-weight: bold; }
+        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 12px 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); }
+        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Intro</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Projects</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Q Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn active">Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> 4-DAY INTENSIVE STUDY SCHEDULE</h1>
+        <p>A structured countdown plan for the TMX Cybersecurity Analyst Interview.</p>
+    </header>
+
+    <div class="day-card">
+        <h2>DAY 1: SOC FOUNDATIONS & SIEM</h2>
+        <table>
+            <tr><th>Morning</th><td>Concepts: SIEM vs SOAR, IDS vs IPS, Firewall layers. Study <span class="priority-high">ELK Stack components</span> (Filebeat, Logstash, Elasticsearch, Kibana).</td></tr>
+            <tr><th>Afternoon</th><td>Deep Dive: Standardized ports (22, 80, 443, 3389). Study <span class="priority-high">Common Windows Events</span> (4624, 4625, 4672).</td></tr>
+        </table>
+    </div>
+
+    <div class="day-card">
+        <h2>DAY 2: INCIDENT RESPONSE & TOOLS</h2>
+        <table>
+            <tr><th>Morning</th><td>Master the <span class="priority-high">NIST Incident Response Lifecycle</span>. Practice explaining your "Detection & Triage" workflow.</td></tr>
+            <tr><th>Afternoon</th><td>Technical: Review Wireshark basics, TCP Handshake, and basic PowerShell commands for process and network monitoring.</td></tr>
+        </table>
+    </div>
+
+    <div class="day-card">
+        <h2>DAY 3: CLOUD SECURITY & AUTOMATION</h2>
+        <table>
+            <tr><th>Morning</th><td>Review AWS Security Tools: <span class="priority-high">CloudTrail</span>, IAM Advisor, Security Groups, and Shield/WAF.</td></tr>
+            <tr><th>Afternoon</th><td>Automation: Refresh your memory on Python libraries for log parsing and basic regex. Practice <span class="priority-high">"Infrastructure as Code" security</span> (Terraform secrets).</td></tr>
+        </table>
+    </div>
+
+    <div class="day-card">
+        <h2>DAY 4: TMX & BEHAVIORAL MOCK</h2>
+        <table>
+            <tr><th>Morning</th><td>TMX Group Deep Dive: Canada's financial infrastructure. OSFI compliance and why trade security is vital.</td></tr>
+            <tr><th>Afternoon</th><td>Mock Interviews: Nail the <span class="priority-high">Self-Introduction</span> and "Why TMX?". Review the entire Question Bank twice.</td></tr>
+        </table>
+    </div>
+
+</div>
+
+<footer>Prepared for Ravi Kiran Kambhampati | 4-Day Prep Mission</footer>
+
+</body>
+</html>

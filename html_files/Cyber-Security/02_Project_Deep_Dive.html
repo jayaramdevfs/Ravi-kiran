@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT DEEP DIVE - CYBER SECURITY</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --bg-color: #21201e;
+            --card-bg: #292825;
+            --accent: #df7c58;
+            --accent-secondary: #42413e;
+            --text-main: #e8e4dc;
+            --text-muted: #9b9a97;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', ui-serif, Georgia, serif; color: var(--text-main); font-weight: 500; margin-top: 0; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        .card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--accent-secondary); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+        .arch-diagram { background-color: rgba(0,0,0,0.4); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--accent); white-space: pre-wrap; font-family: 'SF Mono', monospace; font-size: 0.95rem; margin: 1rem 0; overflow-x: auto; color: var(--text-main); }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { padding: 12px; border: 1px solid var(--accent-secondary); text-align: left; vertical-align: top; }
+        th { background-color: var(--accent-secondary); color: var(--text-main); }
+        td { color: var(--text-muted); }
+        .collapsible { cursor: pointer; padding: 15px; width: 100%; text-align: left; border: none; outline: none; background-color: var(--accent-secondary); color: var(--text-main); font-weight: bold; border-radius: 4px; margin-bottom: 5px; transition: 0.2s;}
+        .active, .collapsible:hover { background-color: var(--accent); color: #fff; }
+        .content { padding: 15px; display: none; overflow: hidden; background-color: rgba(33, 32, 30, 0.5); border-radius: 0 0 4px 4px; margin-bottom: 15px; border-left: 3px solid var(--accent); }
+        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 12px 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); }
+        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; white-space: nowrap; }
+        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; }
+        .qa-box { margin-bottom: 15px; }
+        .qa-q { font-weight: bold; color: var(--text-main); margin-bottom: 5px; }
+        .qa-a { color: var(--text-muted); padding-left: 15px; border-left: 2px solid var(--accent-secondary); }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Introduction</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn active">Project Deep Dive</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Questions Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Study Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> PROJECT DEEP DIVE GUIDE</h1>
+        <p>Mastering technical explanations for your portfolio projects.</p>
+    </header>
+
+    <!-- PROJECT 1: SOC Lab -->
+    <div class="card">
+        <h2>PROJECT 1: SOC Threat Detection & Log Monitoring Lab</h2>
+        
+        <h3>30-Second Elevator Pitch</h3>
+        <p style="font-style: italic; border-left: 3px solid var(--accent); padding-left: 10px;">
+            "I built a fully functional SOC Monitoring Lab using the ELK Stack (Elasticsearch, Logstash, Kibana). I configured Filebeat on Windows and Linux endpoints to ship logs to a centralized Logstash server, where I applied grok filters for parsing. I then created Kibana dashboards to visualize authentication patterns and created alerts for suspicious activities like SSH brute-force and account password changes."
+        </p>
+
+        <h3>Architecture Diagram</h3>
+        <div class="arch-diagram">
+[Endpoints: Windows/Linux] 
+       ↓ (Filebeat: Log shipping)
+[Logstash: Centralized Parser]
+       ↓ (Grok Filters: Log normalization)
+[Elasticsearch: Storage & Indexing]
+       ↓ (Kibana: Visualization & Alerting)
+[SOC Analyst Dashboard]
+        </div>
+
+        <h3>Technical Highlights</h3>
+        <ul>
+            <li><strong>Log Correlation:</strong> Linked successful logins from unknown IPs to previous failed attempts to detect 'Low and Slow' brute force.</li>
+            <li><strong>Normalization:</strong> Used Logstash Ruby filters to handle complex nested log structures from Windows Event Viewer.</li>
+            <li><strong>Alerting:</strong> Set up thresholds for authentication failures (>5 in 1 min) to trigger high-priority alerts.</li>
+        </ul>
+
+        <button class="collapsible">Potential Interview Q&As (Expand)</button>
+        <div class="content">
+            <div class="qa-box">
+                <div class="qa-q">Q: What was the biggest challenge in setting up the ELK stack?</div>
+                <div class="qa-a">"Logstash Grok filtering. Some Windows events are very noisy and have unpredictable structures. I spent a lot of time testing patterns in the Grok Debugger to ensure 100% parsing accuracy for Event ID 4624 (Successful Login)."</div>
+            </div>
+            <div class="qa-box">
+                <div class="qa-q">Q: How would you scale this for TMX's multi-cloud environment?</div>
+                <div class="qa-a">"I would use a distributed ELK deployment in AWS using Amazon OpenSearch, or ship logs directly from CloudWatch/S3 using Lambda-based log shippers to maintain high throughput."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 2: AWS Security Monitoring -->
+    <div class="card">
+        <h2>PROJECT 2: AWS Cloud Security Monitoring</h2>
+        
+        <h3>30-Second Elevator Pitch</h3>
+        <p style="font-style: italic; border-left: 3px solid var(--accent); padding-left: 10px;">
+            "Focused on securing the infrastructure layer of my York University projects, I implemented AWS IAM least-privilege policies. I monitored CloudTrail for 'UnauthorizedOperation' errors to detect potential lateral movement and configured VPC Flow Log monitoring to identify unusual outbound traffic patterns that might indicate data exfiltration."
+        </p>
+
+        <h3>Architecture Diagram</h3>
+        <div class="arch-diagram">
+[AWS Infrastructure: EC2, S3, IAM] 
+       ↓ (CloudTrail / VPC Flow Logs)
+[CloudWatch: Log Storage]
+       ↓ (Metric Filters: Pattern matching)
+[SNS: Alerting System]
+       ↓ 
+[Admin: Email/SMS Alerts]
+        </div>
+
+        <h3>Technical Highlights</h3>
+        <ul>
+            <li><strong>IAM Hardening:</strong> Audited existing roles and reduced 'Administrative' access by 70%, using Policy Simulator for validation.</li>
+            <li><strong>VPC Flow Logs:</strong> Created CloudWatch metric filters for 'REJECT' actions on Port 22 and Port 3389 to monitor for scans.</li>
+        </ul>
+    </div>
+
+</div>
+
+<button id="back-to-top">↑ Top</button>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | Cybersecurity Analyst Interview | TMX Group
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        }
+    });
+</script>
+</body>
+</html>

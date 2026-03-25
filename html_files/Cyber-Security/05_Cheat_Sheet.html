@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERSECURITY INTERVIEW CHEAT SHEET</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --bg-color: #21201e;
+            --card-bg: #292825;
+            --accent: #df7c58;
+            --accent-secondary: #42413e;
+            --text-main: #e8e4dc;
+            --text-muted: #9b9a97;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1 { font-family: 'Playfair Display', serif; font-weight: 500; }
+        .cheat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .cheat-card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--accent-secondary); transition: transform 0.2s; }
+        .cheat-card:hover { transform: translateY(-2px); }
+        h3 { color: var(--accent); margin-top: 0; font-size: 1.2rem; }
+        ul { padding-left: 20px; list-style-type: none; }
+        li { margin-bottom: 8px; color: var(--text-muted); position: relative; }
+        li::before { content: '✺'; position: absolute; left: -20px; color: var(--accent); font-size: 0.8rem; top: 4px; }
+        pre { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 0.85rem; overflow-x: auto; color: var(--text-main); }
+        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 12px 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); }
+        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Intro</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Projects</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Q Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn active">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> CYBERSECURITY INTERVIEW CHEAT SHEET</h1>
+        <p>Quick Reference for Essential SOC Concepts and Commands.</p>
+    </header>
+
+    <div class="cheat-grid">
+        <div class="cheat-card">
+            <h3>NIST IR LIFECYCLE</h3>
+            <ul>
+                <li><strong>Preparation:</strong> Tools, Policies, Training.</li>
+                <li><strong>Detection & Analysis:</strong> Monitoring, Triage.</li>
+                <li><strong>Containment/Eradication:</strong> Stopping the threat.</li>
+                <li><strong>Recovery:</strong> Restoring operations.</li>
+                <li><strong>Post-Incident:</strong> Lessons Learned.</li>
+            </ul>
+        </div>
+
+        <div class="cheat-card">
+            <h3>SIEM LOGIC (ELK / SPLUNK)</h3>
+            <ul>
+                <li><strong>Grok/Parsing:</strong> Normalizing raw logs into structured data.</li>
+                <li><strong>Correlation:</strong> Identifying patterns across different logs.</li>
+                <li><strong>Thresholds:</strong> Defining what triggers an alert (e.g., >5 fails/min).</li>
+            </ul>
+        </div>
+
+        <div class="cheat-card">
+            <h3>ESSENTIAL PORTS</h3>
+            <ul>
+                <li><strong>FTP:</strong> 21</li>
+                <li><strong>SSH:</strong> 22</li>
+                <li><strong>Telnet:</strong> 23</li>
+                <li><strong>DNS:</strong> 53 (UDP)</li>
+                <li><strong>HTTP/HTTPS:</strong> 80/443</li>
+                <li><strong>RDP:</strong> 3389</li>
+            </ul>
+        </div>
+
+        <div class="cheat-card">
+            <h3>PYTHON ANALYZER SNIPPET</h3>
+            <pre>import re
+log = "Failed password for root from 192.168.1.1 port 22"
+match = re.search(r"Failed.*from ([\d\.]+)", log)
+if match:
+    print(f"Malicious IP detected: {match.group(1)}")</pre>
+        </div>
+
+        <div class="cheat-card">
+            <h3>AWS SECURITY QUICK-LINKS</h3>
+            <ul>
+                <li><strong>Shield:</strong> DDoS protection.</li>
+                <li><strong>WAF:</strong> Web Application Firewall.</li>
+                <li><strong>CloudTrail:</strong> Governance and auditing.</li>
+                <li><strong>GuardDuty:</strong> Managed threat detection.</li>
+            </ul>
+        </div>
+
+        <div class="cheat-card">
+            <h3>CRITICAL WINDOWS EVENT IDs</h3>
+            <ul>
+                <li><strong>4624:</strong> Successful login.</li>
+                <li><strong>4625:</strong> Failed login.</li>
+                <li><strong>4648:</strong> Login with explicit credentials.</li>
+                <li><strong>4720:</strong> User account created.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<footer>Prepared for Ravi Kiran Kambhampati | Study Fast, Defend Strong.</footer>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERSECURITY QUESTIONS BANK - TMX GROUP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --bg-color: #21201e;
+            --card-bg: #292825;
+            --accent: #df7c58;
+            --accent-secondary: #42413e;
+            --text-main: #e8e4dc;
+            --text-muted: #9b9a97;
+            --highlight: #df7c58;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        .container { max-width: 1000px; margin: auto; padding: 1.5rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1, h2 { font-family: 'Playfair Display', serif; font-weight: 500; }
+        
+        .filters { position: sticky; top: 50px; background: rgba(33, 32, 30, 0.95); padding: 12px; z-index: 90; border-radius: 12px; margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; backdrop-filter: blur(8px); border-bottom: 1px solid var(--accent-secondary); }
+        .search-bar { flex: 1; min-width: 200px; padding: 12px 20px; background: transparent; border: 1px solid var(--accent-secondary); color: var(--text-main); border-radius: 24px; outline: none; }
+        .cat-select { padding: 10px 15px; background: var(--card-bg); border: 1px solid var(--accent-secondary); color: var(--text-main); border-radius: 24px; outline: none; cursor: pointer; }
+
+        .q-card { background: var(--card-bg); margin-bottom: 10px; border-radius: 12px; border: 1px solid var(--accent-secondary); transition: 0.2s; overflow: hidden; }
+        .q-btn { width: 100%; text-align: left; padding: 14px; background: none; border: none; color: var(--text-main); font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; font-size: 1rem; }
+        .q-ans { padding: 15px; display: none; color: var(--text-muted); border-top: 1px solid var(--accent-secondary); background: rgba(0,0,0,0.1); }
+        .cat-tag { font-size: 0.75rem; background: var(--accent-secondary); padding: 2px 8px; border-radius: 10px; margin-left: 10px; color: var(--text-main); }
+        .highlight-phrase { color: var(--accent); font-weight: 600; }
+
+        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 12px 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); }
+        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; padding: 12px 18px; border-radius: 24px; cursor: pointer; z-index: 99; font-weight: bold; border: none; }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Intro</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Projects</a>
+    <a href="03_Questions_Bank.html" class="nav-btn active">Q Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> CYBERSECURITY QUESTIONS BANK</h1>
+        <p>Focused technical and behavioral prep for TMX SOC Analyst Interview.</p>
+    </header>
+
+    <div class="filters">
+        <input type="text" id="search" class="search-bar" placeholder="Search keywords (e.g., 'SIEM', 'TMX')..." onkeyup="filterQs()">
+        <select id="cat-filter" class="cat-select" onchange="filterQs()">
+            <option value="all">All Categories</option>
+            <option value="soc">SOC & SIEM</option>
+            <option value="ir">Incident Response</option>
+            <option value="net">Network Security</option>
+            <option value="cloud">Cloud Security</option>
+            <option value="behavioral">Behavioral</option>
+            <option value="tmx">TMX Specific</option>
+        </select>
+    </div>
+
+    <div id="q-container"></div>
+</div>
+
+<button id="back-to-top" onclick="window.scrollTo(0,0)">↑ Top</button>
+
+<footer>Prepared for Ravi Kiran Kambhampati | TMX Group | Cyber Security Interview Phase</footer>
+
+<script>
+    const qData = [
+        { c: 'soc', q: "What is a SIEM and why is it used?", a: "SIEM (Security Information and Event Management) provides centralized logging and real-time correlation. It allows us to see patterns that individual devices miss. In my ELK Stack project, I used it to correlate failed SSH attempts with subsequent successful ones from different IPs." },
+        { c: 'soc', q: "Describe the difference between an IDS and an IPS.", a: "An IDS (Intrusion Detection System) is passive; it alerts an analyst when it sees suspicious traffic. An IPS (Intrusion Prevention System) is active; it automatically drops or blocks the traffic to prevent the attack." },
+        { c: 'soc', q: "What are the common ports for SSH, HTTP, HTTPS, and RDP?", a: "SSH is 22, HTTP is 80, HTTPS is 443, and RDP is 3389. I monitor for spikes in RDP (3389) as it's a common target for ransomware actors." },
+        { c: 'ir', q: "Explain the Incident Response lifecycle (NIST).", a: "It has four main phases: 1. Preparation (setting tools/policies), 2. Detection & Analysis (spotting the event), 3. Containment, Eradication & Recovery (stopping the spread and fixing it), and 4. Post-Incident Activity (Lessons Learned)." },
+        { c: 'ir', q: "What is a False Positive and why is it a problem?", a: "A False Positive is when a benign activity is flagged as malicious. It creates 'Alert Fatigue' for the SOC team. I aim to reduce these by fine-tuning Regex patterns as I did in my Python SOC project." },
+        { c: 'net', q: "What is the difference between TCP and UDP?", a: "TCP is connection-oriented and ensures packet delivery (used for HTTP/SSH). UDP is connectionless and faster but doesn't guarantee delivery (used for DNS/Streaming)." },
+        { c: 'cloud', q: "How would you secure an S3 bucket in AWS?", a: "I would ensure Public Access is blocked, enable server-side encryption (KMS), and use Bucket Policies to enforce TLS-only access. During my internship, I audited these using IAM Policy Simulator." },
+        { c: 'behavioral', q: "Tell me about a time you worked on a complex project.", a: "I built an ELK Stack lab to monitor my home network. The challenge was normalizing Windows logs. I solved this by using Logstash Grok filters, which taught me the importance of clean data in security analysis." },
+        { c: 'tmx', q: "What do you know about TMX Group's security needs?", a: "As a financial exchange, TMX is a high-value target for state-sponsored and criminal actors. Uptime and low-latency are critical, so security must be transparent but robust. You follow strict compliance like OSFI and SOC2." }
+    ];
+
+    const container = document.getElementById('q-container');
+    qData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `q-card cat-${item.c}`;
+        card.setAttribute('data-category', item.c);
+        card.innerHTML = `
+            <button class="q-btn" onclick="toggleAns(this)">
+                <span>${item.q} <span class="cat-tag">${item.c.toUpperCase()}</span></span>
+                <span>+</span>
+            </button>
+            <div class="q-ans">${item.a}</div>
+        `;
+        container.appendChild(card);
+    });
+
+    function toggleAns(btn) {
+        const ans = btn.nextElementSibling;
+        const ind = btn.querySelectorAll('span')[1];
+        if(ans.style.display === 'block') {
+            ans.style.display = 'none';
+            ind.textContent = '+';
+            btn.style.color = "var(--text-main)";
+        } else {
+            ans.style.display = 'block';
+            ind.textContent = '-';
+            btn.style.color = "var(--highlight)";
+        }
+    }
+
+    function filterQs() {
+        const q = document.getElementById('search').value.toLowerCase();
+        const cat = document.getElementById('cat-filter').value;
+        document.querySelectorAll('.q-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            const cCat = card.getAttribute('data-category');
+            card.style.display = (text.includes(q) && (cat === 'all' || cCat === cat)) ? 'block' : 'none';
+        });
+    }
+
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => btt.style.display = window.scrollY > 300 ? 'block' : 'none');
+</script>
+</body>
+</html>
