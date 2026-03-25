@@ -1,0 +1,4 @@
+__pycache__/
+.pytest_cache/
+incident_report.json
+*.pyc

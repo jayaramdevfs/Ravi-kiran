@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-DAY STUDY SCHEDULE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap');
+        /* Premium Aurora Glass Theme */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-border-top: rgba(255, 255, 255, 0.25);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --search-outline: #38bdf8;
+            --success: #10b981;
+            --danger: #f43f5e;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; color: var(--text-main); font-weight: 600; margin-top: 0; margin-bottom: 15px; letter-spacing: -0.5px; }
+        a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 20px 0 rgba(129, 140, 248, 0.2); }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { padding: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: left; vertical-align: top; }
+        th { background-color: rgba(255,255,255,0.1); color: var(--text-main); font-weight: 600; }
+        
+        .rule-diagram { display: flex; text-align: center; gap: 10px; margin: 20px 0; font-weight: bold; }
+        .rule-box { flex: 1; padding: 20px; border-radius: 12px; color: #fff; }
+        .box-1 { background: #e74c3c; } 
+        .box-4 { background: #f39c12; }
+        .box-3 { background: #2980b9; }
+
+        nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+        .nav-btn { 
+            background: transparent; color: var(--text-muted); 
+            border: 1px solid transparent; 
+            padding: 8px 18px; border-radius: 24px; cursor: pointer; text-decoration: none; 
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; 
+        }
+        .nav-btn.active, .nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); border-color: var(--glass-border); box-shadow: 0 0 15px var(--accent-glow); }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: var(--text-muted); }
+        strong { color: var(--text-main); }
+        
+        .progress-row { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s; }
+        .progress-row:hover { background-color: rgba(56, 189, 248, 0.1); }
+        .task-col { flex: 3; }
+        .time-col { flex: 1; color: var(--accent); font-weight: bold; }
+        .check-col { flex: 0.5; text-align: center; }
+        input[type="checkbox"] { transform: scale(1.5); accent-color: var(--success); cursor: pointer; }
+        
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; border-color: #fff; border: none; padding: 12px 18px; border-radius: 5px; cursor: pointer; z-index: 99; font-weight: bold; }
+        footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; }
+        
+        @media print {
+            body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+            .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+            h1, h2, h3, strong { color: black; }
+            th { background-color: #e8e4dc; color: black; border-color: #ccc; }
+            td, .progress-row { border-color: #ccc; color: #333; }
+            nav.sticky, #back-to-top { display: none; }
+            input[type="checkbox"] { border: 1px solid black; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Introduction</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Project Deep Dive</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Questions Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn active">Study Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1>2-DAY STUDY SCHEDULE</h1>
+        <p>Your interactive blueprint to interview readiness.</p>
+    </header>
+
+    <div class="card">
+        <h2>The 1-4-3 Rule of Prep</h2>
+        <div class="rule-diagram">
+            <div class="rule-box box-1">
+                <div style="font-size: 2rem;">1 Hour</div>
+                <div>Company / JD Review</div>
+                <div style="font-size: 0.8rem; font-weight: normal; margin-top: 10px;">Research TMX, OSFI, financial cloud architectures. Memorize the Job Description.</div>
+            </div>
+            <div class="rule-box box-4">
+                <div style="font-size: 2rem;">4 Hours</div>
+                <div>Verbal Practice</div>
+                <div style="font-size: 0.8rem; font-weight: normal; margin-top: 10px;">DO NOT merely read. Speak out loud. Record yourself. Iterate on STAR stories.</div>
+            </div>
+            <div class="rule-box box-3">
+                <div style="font-size: 2rem;">3 Hours</div>
+                <div>Technical Gap-Filling</div>
+                <div style="font-size: 0.8rem; font-weight: normal; margin-top: 10px;">Crash courses on Kubernetes (AKS/EKS), Azure mapping, and networking ports.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>DAY 1: THE FOUNDATION</h2>
+        <p><strong>Goal:</strong> Solidify your narrative, perfectly nail your intro, and deeply understand your projects.</p>
+        
+        <div class="progress-row">
+            <div class="time-col">09:00 - 10:00</div>
+            <div class="task-col"><strong>Self-Intro Drill:</strong> Practice the 60s and 90s intro out loud until it sounds natural. Record and listen back.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d1_1"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">10:00 - 11:30</div>
+            <div class="task-col"><strong>Project Deep Dive:</strong> Stand at a whiteboard/paper and draw the architecture for SOC log analyzer and SOAR-Lite while explaining it.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d1_2"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">11:30 - 12:30</div>
+            <div class="task-col"><strong>TMX Alignment:</strong> Review TMX Group operations, OSFI regulations, and what high availability means for a stock exchange.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d1_3"></div>
+        </div>
+        <div class="progress-row" style="background-color: rgba(255,255,255,0.05);">
+            <div class="time-col">12:30 - 13:30</div>
+            <div class="task-col"><em>Lunch Break - Hydrate, clear your mind.</em></div>
+            <div class="check-col"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">13:30 - 15:30</div>
+            <div class="task-col"><strong>Tech Gap #1 (Kubernetes):</strong> Watch a 1-hour K8s crash course. Understand Pods, Deployments, Services, EKS vs AKS.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d1_4"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">15:30 - 17:30</div>
+            <div class="task-col"><strong>Tech Gap #2 (Azure):</strong> Review AWS-to-Azure service mappings. Focus on Entra ID (Azure AD), Resource Groups, and VNet basics.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d1_5"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">Evening</div>
+            <div class="task-col">Relax. Read exactly one article on "Cloud Migration in Financial Institutions."</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d1_6"></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>DAY 2: THE SHARPENING</h2>
+        <p><strong>Goal:</strong> Rapid-fire recall, behavioral question mastery, and logistical prep.</p>
+
+        <div class="progress-row">
+            <div class="time-col">09:00 - 11:00</div>
+            <div class="task-col"><strong>Question Bank Drill (Sections 1-5):</strong> AWS, Azure, IaC, K8s, Networking. Read a question, answer out loud, check notes.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d2_1"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">11:00 - 12:30</div>
+            <div class="task-col"><strong>Cheat Sheet Memorization:</strong> Ports, protocol concepts, NIST 5-functions framework, DR (RTO/RPO). Write them down from memory.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d2_2"></div>
+        </div>
+        <div class="progress-row" style="background-color: rgba(255,255,255,0.05);">
+            <div class="time-col">12:30 - 13:30</div>
+            <div class="task-col"><em>Lunch Break - Walk outside. Get fresh air.</em></div>
+            <div class="check-col"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">13:30 - 15:30</div>
+            <div class="task-col"><strong>Behavioral Questions (STAR):</strong> Practice: Conflict, Mistake, Prioritization, Weakness, Why Hire You. Speak out loud!</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d2_3"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">15:30 - 17:00</div>
+            <div class="task-col"><strong>Question Bank Drill (Sections 6-12):</strong> CI/CD, Scripting, Incident Response, TMX facts.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d2_4"></div>
+        </div>
+        <div class="progress-row">
+            <div class="time-col">Evening</div>
+            <div class="task-col"><strong>Interview Prep Routine:</strong> Lay out clothes, test Zoom/Teams camera & mic, put "Cheat Sheet" on split screen/print. Sleep early.</div>
+            <div class="check-col"><input type="checkbox" class="tracker-cb" id="d2_5"></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Study Tips & Focus Areas</h2>
+        <ul>
+            <li><strong>You cannot study everything:</strong> Focus heavily on what's in your resume first (AWS, Terraform, Python). They will drill you on what you claim to know.</li>
+            <li><strong>The "I don't know" technique:</strong> If asked something you don't know (e.g., Azure AKS), say: <em>"I haven't used AKS in production, but based on my experience with Docker and AWS, I understand it manages the K8s control plane. My first step to deploy to it would be..."</em></li>
+            <li><strong>Connect to Security:</strong> Always bring it back to your dual degree. TMX cares about security. Use the phrase: "With a security-first mindset..."</li>
+        </ul>
+    </div>
+</div>
+
+<button id="back-to-top">↑ Top</button>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | Cloud Engineer Interview | TMX Group | CAD $100K - $115K
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const checkboxes = document.querySelectorAll('.tracker-cb');
+        checkboxes.forEach(cb => {
+            cb.checked = localStorage.getItem(cb.id) === 'true';
+            cb.addEventListener('change', () => {
+                localStorage.setItem(cb.id, cb.checked);
+            });
+        });
+        
+        const backToTop = document.getElementById("back-to-top");
+        if(backToTop) {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = "block";
+                } else {
+                    backToTop.style.display = "none";
+                }
+            });
+            backToTop.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+    });
+</script>
+</body>
+</html>

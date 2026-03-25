@@ -1,0 +1,6 @@
+flask
+flask-sqlalchemy
+pandas
+gunicorn
+jinja2
+requests

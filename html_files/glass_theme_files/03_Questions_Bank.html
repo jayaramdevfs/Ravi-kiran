@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERVIEW QUESTIONS BANK</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap');
+        /* Premium Aurora Glass Theme */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-border-top: rgba(255, 255, 255, 0.25);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --search-outline: #38bdf8;
+            --success: #10b981;
+            --danger: #f43f5e;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2 { font-family: 'Outfit', sans-serif; color: var(--text-main); font-weight: 600; margin-top: 0; margin-bottom: 15px; letter-spacing: -0.5px; }
+        .container { max-width: 1000px; margin: auto; padding: 1.5rem; }
+        
+        .filters { position: sticky; top: 80px; background: var(--glass-bg); padding: 15px; z-index: 90; border-radius: 16px; margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); shadow: var(--shadow-glass); }
+        .search-bar { flex: 1; min-width: 200px; padding: 14px 24px; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); color: var(--text-main); border-radius: 30px; outline: none; font-family: 'Outfit', sans-serif; backdrop-filter: blur(8px); transition: all 0.3s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); } .search-bar:focus { border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+        .cat-select { padding: 12px 20px; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); color: var(--text-main); border-radius: 20px; outline: none; cursor: pointer; transition: 0.3s; font-family: 'Outfit', sans-serif;} .cat-select:focus { border-color: var(--accent); }
+
+        .q-card { background: rgba(0,0,0,0.15); margin-bottom: 12px; border-radius: 12px; border: 1px solid var(--glass-border); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; backdrop-filter: blur(4px); } .q-card:hover { transform: translateX(4px); box-shadow: -4px 4px 15px rgba(0,0,0,0.2); border-left: 2px solid var(--accent); }
+        .q-btn { width: 100%; text-align: left; padding: 14px; background: none; border: none; color: var(--text-main); font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; font-size: 1rem; transition: background 0.2s; }
+        .q-btn:hover { background: rgba(233, 69, 96, 0.1); }
+        .q-ans { padding: 0 15px 15px 15px; display: none; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 5px; padding-top: 10px; }
+        .cat-tag { font-size: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); padding: 2px 6px; border-radius: 10px; margin-left: 10px; white-space: nowrap; align-self: center; }
+        .highlight-phrase { color: var(--highlight); font-style: italic; }
+
+        nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+        .nav-btn { 
+            background: transparent; color: var(--text-muted); 
+            border: 1px solid transparent; 
+            padding: 8px 18px; border-radius: 24px; cursor: pointer; text-decoration: none; 
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; 
+        }
+        .nav-btn.active, .nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); border-color: var(--glass-border); box-shadow: 0 0 15px var(--accent-glow); }
+
+        .cat-aws { border-left-color: #f7931a; }
+        .cat-azure { border-left-color: #0089d6; }
+        .cat-terraform { border-left-color: #5c4ee5; }
+        .cat-kubernetes { border-left-color: #326ce5; }
+        .cat-network { border-left-color: #e74c3c; }
+        .cat-cicd { border-left-color: #27ae60; }
+        .cat-linux { border-left-color: #f1c40f; }
+        .cat-ir { border-left-color: #c0392b; }
+        .cat-behavioral { border-left-color: #8e44ad; }
+        .cat-tmx { border-left-color: #d35400; }
+        .cat-resume { border-left-color: #16a085; }
+        .cat-docker { border-left-color: #0db7ed; }
+
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; border-color: #fff; border: none; padding: 12px 18px; border-radius: 5px; cursor: pointer; z-index: 99; font-weight: bold; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; margin-top: 40px; }
+
+        @media print {
+            body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+            .filters, nav.sticky, #back-to-top { display: none; }
+            .q-card { background: rgba(0,0,0,0.15); margin-bottom: 12px; border-radius: 12px; border: 1px solid var(--glass-border); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; backdrop-filter: blur(4px); } .q-card:hover { transform: translateX(4px); box-shadow: -4px 4px 15px rgba(0,0,0,0.2); border-left: 2px solid var(--accent); }
+            .q-ans { display: block !important; color: #333; }
+            .q-btn { color: #000; font-weight: bold; pointer-events: none; }
+            .highlight-phrase { color: #000; font-weight: bold; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Intro</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Projects</a>
+    <a href="03_Questions_Bank.html" class="nav-btn active">Q Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header style="text-align: center; margin-bottom: 1rem;">
+        <h1>INTERVIEW QUESTIONS BANK (145 Qs)</h1>
+        <p>Comprehensive technical and behavioral prep for TMX Cloud Engineering.</p>
+    </header>
+
+    <div class="filters">
+        <input type="text" id="search" class="search-bar" placeholder="Search a keyword (e.g., 'VPC', 'conflict')..." onkeyup="filterQs()">
+        <select id="cat-filter" class="cat-select" onchange="filterQs()">
+            <option value="all">All Categories</option>
+            <option value="aws">AWS Core (1-15)</option>
+            <option value="azure">Azure Basics (16-25)</option>
+            <option value="terraform">Terraform (26-40)</option>
+            <option value="kubernetes">Kubernetes (41-55)</option>
+            <option value="network">Net & Sec (56-70)</option>
+            <option value="cicd">CI/CD (71-80)</option>
+            <option value="linux">Linux & Scripting (81-90)</option>
+            <option value="ir">IR & Monitoring (91-100)</option>
+            <option value="behavioral">Behavioral (101-115)</option>
+            <option value="tmx">TMX Specific (116-125)</option>
+            <option value="resume">Resume-Based (126-140)</option>
+            <option value="docker">Docker (141-145)</option>
+        </select>
+        <button onclick="expandAll()" class="cat-select" style="cursor:pointer; background:var(--accent);">Expand All</button>
+        <button onclick="collapseAll()" class="cat-select" style="cursor:pointer; background:var(--accent-secondary);">Collapse All</button>
+    </div>
+
+    <div id="q-container">
+        <!-- Generating 145 Questions sequentially via Javascript to save raw HTML bloating -->
+        <!-- Will append directly to DOM on load -->
+    </div>
+</div>
+
+<button id="back-to-top" onclick="window.scrollTo(0,0)">↑ Top</button>
+
+<footer>Prepared for Ravi Kiran Kambhampati | TMX Group | CAD $100K-$115K</footer>
+
+<script>
+    // Data definition for all 145 questions to keep document size efficient and organized
+    const qData = [
+        // ---------- SECTION 1: AWS CORE SERVICES (1-15) ----------
+        { c: 'aws', q: "Q1. What is the difference between an IAM User and an IAM Role?", a: "An IAM User is an identity with permanent credentials, representing a person or service. An IAM Role provides temporary credentials that can be assumed by a trusted entity. At TefoLogic, I utilized Terraform to deploy IAM Roles attached to EC2 instances. This meant the instances could securely access S3 buckets using short-term tokens, completely eliminating the risk of hardcoded long-term access keys." },
+        { c: 'aws', q: "Q2. Security Groups vs Network ACLs?", a: "Security Groups (SGs) operate at the instance level and are stateful, meaning if traffic is allowed in, the return traffic is automatically allowed out. NACLs operate at the subnet level and are stateless, requiring explicit allow and deny rules for both inbound and outbound traffic. I strictly hardened SGs at TefoLogic by mapping explicit allowed IPs and removing the default 0.0.0.0/0 inbound rules." },
+        { c: 'aws', q: "Q3. Walk me through the architecture of a VPC.", a: "A VPC is a logically isolated virtual network containing your AWS resources. It consists of subnets (public and private) spread across Availability Zones for high availability. A public subnet has a route to an Internet Gateway, while a private subnet routes outbound traffic through a NAT Gateway. In my cloud setups, I ensure databases always sit in private subnets with stringent routing." },
+        { c: 'aws', q: "Q4. Compare S3 storage classes (Standard, IA, Glacier).", a: "S3 Standard is for frequently accessed data with millisecond latency. S3 Infrequent Access (IA) is cheaper for storage but charges for data retrieval, ideal for backups. S3 Glacier is for deep archiving with retrieval times ranging from minutes to hours. To optimize costs at TefoLogic, I incorporated S3 lifecycle policies via Terraform to transition old log files into Glacier." },
+        { c: 'aws', q: "Q5. How does AWS CloudTrail aid security?", a: "CloudTrail logs all API calls made within an AWS account, essentially answering 'who did what, when, and from where.' It's my primary auditing tool. For example, if an unauthorized S3 bucket is created, CloudTrail shows the exact IAM identity and IP address that executed the PutBucket API. I treat it as the foundational telemetry for any SOC environment." },
+        { c: 'aws', q: "Q6. Explain AWS Lambda and its use cases.", a: "Lambda is a serverless compute service that runs code in response to triggers without provisioning servers. You only pay for the compute time consumed. I would theoretically use Lambda connected to my SOC Threat Detection logic to process CloudTrail logs dropping into an S3 bucket in real time, executing instant remediation like isolating compromised EC2s." },
+        { c: 'aws', q: "Q7. What are the types of Elastic Load Balancers?", a: "Application Load Balancers (ALB) operate at Layer 7, inspecting HTTP/HTTPS headers for advanced routing. Network Load Balancers (NLB) operate at Layer 4, offering ultra-high performance for TCP/UDP traffic without inspecting the payload. In a financial setup like TMX, I'd rely on ALBs for web apps to terminate TLS and integrate closely with AWS WAF." },
+        { c: 'aws', q: "Q8. How would you choose an EC2 instance type?", a: "Instance selection depends on the workload. T-series burstable instances are great for dev environments. Compute-optimized (C) instances are for CPU-intensive applications, and memory-optimized (R) are for large databases. At TefoLogic, I evaluated the workload needs to ensure we weren't over-provisioning resources, balancing cost efficiency with required IOPS." },
+        { c: 'aws', q: "Q9. What is the role of CloudWatch?", a: "CloudWatch is AWS's native monitoring and observability service. It tracks metrics in real-time, logs application outputs, and triggers alarms. I use CloudWatch heavily to monitor CPU spikes or memory exhaustion on critical VMs. A CloudWatch alarm can easily trigger an Auto Scaling group to spin up new instances, maintaining high availability." },
+        { c: 'aws', q: "Q10. How does Route 53 differ from standard DNS?", a: "Route 53 does standard DNS resolution, translating domain names to IP addresses, but adds advanced traffic routing policies like weighted, latency-based, and failover routing. For a highly resilient architecture at TMX, Route 53 is essential for active-passive or active-active DR models, immediately redirecting traffic when application health checks fail." },
+        { c: 'aws', q: "Q11. Explain Auto Scaling.", a: "Auto Scaling dynamically adjusts the number of EC2 instances based on current demand. You define a min, max, and desired capacity. It improves fault tolerance because it auto-replaces unhealthy instances. In my production CI/CD workflows, Auto Scaling ensures a new instance pulls the latest deployment artifact immediately upon spinning up." },
+        { c: 'aws', q: "Q12. Discuss SNS vs SQS.", a: "SNS (Simple Notification Service) is a pub/sub messaging model that pushes messages instantly to multiple subscribers like emails or Lambda. SQS (Simple Queue Service) entails a pull model, buffering messages so workers can poll and process them at their own pace. Using SQS prevents backend systems from getting overwhelmed during high-traffic financial spikes." },
+        { c: 'aws', q: "Q13. How do you implement encryption at rest and in transit?", a: "Encryption in transit requires TLS certificates applied to Load Balancers or API Gateways so traffic over the network is unreadable. Encryption at rest is handled by AWS KMS (Key Management Service) integrating with EBS volumes, RDS databases, and S3. As a CyberOps specialist, mandating KMS encryption for all storage in my Terraform files is a non-negotiable standard." },
+        { c: 'aws', q: "Q14. What is AWS Organizations?", a: "Organizations manages multiple AWS accounts centrally, allowing consolidated billing and centralized governance. From a security standpoint, it allows the deployment of Service Control Policies (SCPs). SCPs define the maximum permissions available across the accounts, guaranteeing, for instance, that no developer can launch unencrypted drives, regardless of their IAM permissions." },
+        { c: 'aws', q: "Q15. Walk me through the AWS Shared Responsibility Model.", a: "AWS is responsible for the 'security OF the cloud,' meaning physical data centers, networking hardware, and hypervisors. The customer is responsible for 'security IN the cloud,' including OS patching, data encryption, firewall rules, and IAM policies. Over-relying on AWS without properly configuring things like SGs is the root cause of most cloud breaches." },
+
+        // ---------- SECTION 2: AZURE BASICS (16-25) ----------
+        { c: 'azure', q: "Q16. How do AWS core services map to Azure?", a: "IAM becomes Entra ID (formerly Azure AD). EC2 instances are Azure VMs. VPCs are VNets. S3 maps to Azure Blob Storage, and CloudWatch maps to Azure Monitor. Understanding these mappings allows me to pivot my AWS Terraform experience directly into targeting Azure providers, ensuring TMX's multi-cloud strategy is robust." },
+        { c: 'azure', q: "Q17. What is Microsoft Entra ID?", a: "Entra ID is Azure's central identity and access management service, heavily focused on enterprise user directories and Single Sign-On (SSO). Unlike AWS IAM which focuses mainly on programmatic access, Entra ID governs entire workforces. My CyberOps background makes me naturally focus on configuring Entra ID with MFA and Conditional Access Policies." },
+        { c: 'azure', q: "Q18. Explain Resource Groups vs Subscriptions.", a: "A Subscription in Azure is a logical container forming a billing and governance boundary, akin to an AWS Account. Within a Subscription, Resource Groups are logical folders containing related resources that share a lifecycle (like a web app and its DB). Terraform natively manages Resource Groups as the foundational deployment block in Azure." },
+        { c: 'azure', q: "Q19. Describe an Azure VNet.", a: "A VNet is Azure's equivalent to an AWS VPC, providing logical isolation for Azure resources. VNets feature custom IP addressing via CIDR, subnetting, and routing rules. Security is governed by Network Security Groups (NSGs), which function powerfully as subnet and NIC-level firewalls blocking unauthorized traffic." },
+        { c: 'azure', q: "Q20. What is AKS (Azure Kubernetes Service)?", a: "AKS is Azure's managed Kubernetes platform. It drastically simplifies K8s deployment by having Microsoft manage the complex control plane (API server, etcd) for free. As an engineer, my focus shifts purely to provisioning the worker node pools, deploying applications to Pods, and managing security policies, similar to EKS." },
+        { c: 'azure', q: "Q21. Differentiate ARM Templates from Terraform.", a: "ARM Templates and Bicep are Azure-native JSON-like languages for declarative infrastructure deployment. Terraform is a provider-agnostic HCL language. While ARM is perfect for Azure-exclusive environments, Terraform is the industry standard for hybrid environments like TMX. My preference is Terraform because it uses a single workflow stringently managed by state files." },
+        { c: 'azure', q: "Q22. What is Azure Monitor?", a: "Azure Monitor is the overarching telemetry service collecting metrics and logs across applications, infrastructure, and custom sources. It deeply integrates with Log Analytics workspaces to allow advanced querying via KQL (Kusto Query Language). It's the Azure equivalent of CloudWatch, essential for proactive SOC monitoring." },
+        { c: 'azure', q: "Q23. Describe Azure Key Vault.", a: "Key Vault securely stores and tightly controls access to tokens, passwords, certificates, and API keys. It serves as Azure's central secrets manager, comparable to AWS Secrets Manager. Integrating Key Vault into deployment pipelines ensures that sensitive database connection strings are never exposed in plaintext source code." },
+        { c: 'azure', q: "Q24. Compare Azure DevOps and GitHub Actions.", a: "Both are mature CI/CD orchestration tools. Azure DevOps offers a comprehensive suite encompassing Boards, Repos, Pipelines, and Artifacts natively integrated with Azure. GitHub Actions relies on YAML workflows housed directly within the Git repo. At TefoLogic, I extensively utilized GitHub Actions, but the core declarative CI/CD logic directly transitions to ADO Pipelines." },
+        { c: 'azure', q: "Q25. What is Azure Policy?", a: "Azure Policy enforces organizational standards and assesses compliance at scale. Unlike RBAC which governs 'who' can do something, Policy governs 'what' they can do. For example, enforcing that all deployments must be located in Canadian regions to satisfy TMX's strict data residency and OSFI financial requirements." },
+
+        // ---------- SECTION 3: TERRAFORM / IaC (26-40) ----------
+        { c: 'terraform', q: "Q26. What is Terraform and why use it?", a: "Terraform is an Infrastructure-as-Code tool by HashiCorp using HCL format. It allows engineers to define and provision data center infrastructure declaratively. By treating infrastructure as versioned code, it guarantees reproducible, secure deployments, entirely eliminating the human error associated with clicking through the cloud console." },
+        { c: 'terraform', q: "Q27. Explain the init, plan, apply workflow.", a: "First, 'terraform init' downloads necessary provider plugins and initializes the backend. Next, 'terraform plan' acts as a dry run, reading the state file and comparing it to the code to output exactly what will be crated, updated, or destroyed. Finally, 'terraform apply' executes that exact plan, updating real-world infrastructure." },
+        { c: 'terraform', q: "Q28. What is Terraform state and why is it critical?", a: "State is a JSON file mapping the Terraform configuration to the actual deployed infrastructure. It tracks metadata, resource bindings, and dependencies. If the state file is lost, Terraform loses its link to reality. Because it often contains plaintext secrets, it must be stored extremely securely, typically in an encrypted S3 bucket." },
+        { c: 'terraform', q: "Q29. How do you manage Remote State in AWS?", a: "I configure the backend block in Terraform to utilize an S3 bucket for state storage and a DynamoDB table for state locking. The S3 bucket centralizes state for the whole team and supports versioning. The DynamoDB lock prevents concurrent executions, ensuring two engineers running 'apply' simultaneously don't corrupt the state." },
+        { c: 'terraform', q: "Q30. What are Terraform Modules?", a: "Modules are self-contained, reusable blocks of Terraform configurations. Instead of rewriting VPC and subnet code for every project, you write one 'networking' module and pass it input variables. At TefoLogic, I modularized infrastructure deployments to ensure consistency and enforce secure defaults across the entire company." },
+        { c: 'terraform', q: "Q31. How do you handle secrets in Terraform?", a: "Secrets should never be hardcoded in `.tf` files. Instead, I leverage tools like AWS Systems Manager (SSM) Parameter Store or HashiCorp Vault. I can reference those secrets dynamically utilizing Terraform data sources. Additionally, I strictly mark variables as 'sensitive=true' to prevent them from showing up in terminal logs." },
+        { c: 'terraform', q: "Q32. Explain Terraform workspaces.", a: "Workspaces allow you to manage multiple states associated with a single configuration directory. They are useful for quickly duplicating environments, such as spinning up isolated 'dev' and 'prod' versions of the same code. However, for strict production environments, I prefer using heavily separated directory structures to prevent accidental cross-contamination." },
+        { c: 'terraform', q: "Q33. What does terraform destroy do?", a: "It reads the configuration and state, and orchestrates the deletion of all managed resources in the correct dependency order. In production, 'destroy' is highly dangerous. I mitigate accidental infrastructure deletion through strict IAM controls, GitHub branch protections, and setting 'prevent_destroy = true' lifecycle rules on critical databases." },
+        { c: 'terraform', q: "Q34. How do you import existing infrastructure into Terraform?", a: "You use the 'terraform import' command, which takes a resource address and an existing cloud ID. It maps the real resource into your local state file. After importing, you must manually write the HCL configuration block to match reality, run a plan to verify 0 changes, and then you have successfully brought it under Terraform management." },
+        { c: 'terraform', q: "Q35. What are Terraform Providers?", a: "Providers are logical plugins that act as a translation layer. They understand Terraform HCL and convert it into the API calls for specific platforms like AWS, Azure, or Kubernetes. I configure generic provider blocks passing necessary authentication parameters to allow Terraform to interact directly with the specified cloud API." },
+        { c: 'terraform', q: "Q36. How do you interpret a terraform plan output?", a: "I carefully review the symbols: a green '+' means create, a yellow '~' means update in place, and a red '-' means destroy. A red '-/+' means replacing entirely. Reviewing the plan output diligently prevents catastrophic outages, verifying if Terraform intends to recklessly recreate an active database simply because a parameter changed." },
+        { c: 'terraform', q: "Q37. What are Data Sources?", a: "Data sources allow Terraform to actively query external information that it didn't create. For instance, querying AWS to fetch the latest Amazon Linux AMI ID, or dynamically looking up the VPC ID of a manually created network. This keeps my Terraform code dynamic and drastically reduces hardcoded dependencies." },
+        { c: 'terraform', q: "Q38. How do you handle state drift?", a: "Drift occurs when resources are modified manually via the console outside of Terraform. Running a 'terraform plan' highlights this drift. The solution is either deleting the manual changes to revert to the code, or modifying the HCL code to permanently adopt the new state, bringing the code and reality back into synchronization." },
+        { c: 'terraform', q: "Q39. What is taint and replace?", a: "Historically, 'terraform taint' marked a resource as degraded, forcing it to be destroyed and recreated on the next apply. Now, HashiCorp recommends using the '-replace' flag during plan/apply. It is highly useful when a generic VM boot script fails, and you simply need Terraform to nuke the specific instance and restart it cleanly." },
+        { c: 'terraform', q: "Q40. Explain lifecycle rules in Terraform.", a: "Lifecycle meta-arguments customize resource behaviors. 'create_before_destroy' ensures zero-downtime replacements by spinning up the new resource before killing the old one. 'prevent_destroy' acts as a hard lock rejecting plans that would destroy critical data components, a necessity for financial platforms like TMX workloads." },
+
+        // ---------- SECTION 4: KUBERNETES / EKS / AKS (41-55) ----------
+        { c: 'kubernetes', q: "Q41. What is Kubernetes in simple terms?", a: "Kubernetes, or K8s, is an open-source container orchestration engine. While Docker packages an application to run smoothly, Kubernetes acts as the conductor. It automatically deploys, scales, restarts failing containers, load-balances traffic, and seamlessly rolls out updates across a cluster of multiple virtual machines." },
+        { c: 'kubernetes', q: "Q42. Explain the Control Plane vs Worker Nodes.", a: "The Control Plane is the brain of K8s. It runs the API Server, Scheduler, and etcd database, making all global decisions about the cluster. The Worker Nodes are the muscle. They run the kubelet agent, container runtime, and the actual containerized applications inside Pods. Managed services like EKS take the Control Plane entirely off your hands." },
+        { c: 'kubernetes', q: "Q43. What is a Pod in K8s?", a: "A Pod is the smallest execution unit in Kubernetes. It typically encapsulates a single container (like a Dockerized Python app), along with shared storage volumes and networking IPs. Rather than spinning up naked containers, Kubernetes schedules and manages Pods as ephemeral computing environments." },
+        { c: 'kubernetes', q: "Q44. What is the purpose of a Deployment?", a: "A Deployment provides declarative updates for Pods. Instead of manually creating Pods that die permanently on crash, a Deployment manages a ReplicaSet, guaranteeing that a specific desired number of Pods are always running. It orchestrates zero-downtime rolling updates and provides easy rollback mechanisms." },
+        { c: 'kubernetes', q: "Q45. Differentiate between ClusterIP, NodePort, and LoadBalancer services.", a: "ClusterIP exclusively exposes Pods internally within the cluster. NodePort exposes standard traffic on a static port on every worker node's IP. LoadBalancer, widely used in cloud environments, asks the cloud provider (AWS/Azure) to spin up an external ALB/NLB, funneling internet traffic directly down into the Pod instances securely." },
+        { c: 'kubernetes', q: "Q46. What are Namespaces?", a: "Namespaces logically segregate a single Kubernetes cluster into multiple virtual clusters. This is essential for large enterprises. You can isolate 'dev', 'staging', and 'prod' resources natively, applying Resource Quotas so a rogue dev deployment cannot consume all production CPU, and isolating access via RBAC." },
+        { c: 'kubernetes', q: "Q47. What is EKS and why use it?", a: "Elastic Kubernetes Service is AWS's managed K8s offering. Operating a pure vanilla Kubernetes control plane is incredibly complex and susceptible to failure. EKS abstracts away the etcd backups, API server scaling, and patching, allowing engineers to dedicate focus solely on application delivery and worker node configurations." },
+        { c: 'kubernetes', q: "Q48. Compare AKS to EKS.", a: "AKS (Azure) and EKS (AWS) perform identical managed orchestration. AKS integrates tighter with Microsoft Entra ID for identity management, while EKS integrates with AWS IAM. Both allow provisioning node pools using Terraform. My cloud-agnostic approach ensures I apply the same architectural security paradigms regardless of the hosting provider." },
+        { c: 'kubernetes', q: "Q49. How do you configure applications inside K8s?", a: "You use ConfigMaps and Secrets. ConfigMaps store non-confidential environmental variables and config files mounted into Pods. Secrets store sensitive info like database passwords, encoded securely. This decoupling ensures the exact same Docker container image transitions seamlessly from testing environments to production." },
+        { c: 'kubernetes', q: "Q50. What is an Ingress Controller?", a: "While a LoadBalancer service handles raw L4 traffic, an Ingress operates at Layer 7. It understands HTTP/HTTPS. A single Ingress Controller acts as a smart reverse proxy, routing incoming hostnamess and URL paths to disparate microservices, providing centralized TLS endpoint termination and drastically simplifying network topology." },
+        { c: 'kubernetes', q: "Q51. Explain Helm and its utility.", a: "Helm is the package manager for Kubernetes. Instead of juggling dozens of disconnected YAML manifests, Helm bundles related deployments, services, and configs into cohesive 'Charts'. By utilizing Helm, installing complex applications like Prometheus or a multi-tier web app becomes a simple, templated, heavily version-controlled execution." },
+        { c: 'kubernetes', q: "Q52. How does the Horizontal Pod Autoscaler work?", a: "HPA automatically scales the number of running Pod replicas based on observed CPU utilization or custom system metrics via the Metrics Server. If a financial application undergoes a massive usage spike at TSX market open, HPA immediately identifies the CPU threshold breach and schedules more Pods to absorb the load dynamically." },
+        { c: 'kubernetes', q: "Q53. What are StatefulSets?", a: "While Deployments generally handle stateless web servers where any Pod can die seamlessly, StatefulSets manage stateful applications like databases. They ensure ordered, predictable deployment and guarantee stable network identifiers and persistent disk volumes so that database replicas can maintain absolute data integrity during scaling." },
+        { c: 'kubernetes', q: "Q54. Walk me through troubleshooting a failing Pod.", a: "First, 'kubectl get pods' to view status (CrashLoopBackOff indicates failure). Next, 'kubectl describe pod <name>' reviews lifecycle events pointing toward uncreatable volumes or memory limits. Finally, 'kubectl logs <pod-name>' retrieves the container's standard output, usually revealing the underlying code or configuration failure directly." },
+        { c: 'kubernetes', q: "Q55. How do you implement Zero Trust inside a K8s cluster?", a: "I define NetworkPolicies that operate essentially as internal firewalls. By default, K8s allows all Pods to talk to each other. NetworkPolicies mandate default-deny internal traffic, and specifically whitelist only necessary communication, such as exclusively allowing the frontend namespace to converse with the backend namespace." },
+
+        // ---------- SECTION 5: NETWORKING & SECURITY (56-70) ----------
+        { c: 'network', q: "Q56. Briefly describe the OSI Model.", a: "The OSI model governs network communications. Layer 3 (Network) handles IP routing, where AWS VPCs and Subnets operate. Layer 4 (Transport) handles TCP/UDP packet transmission, monitored by Security Groups. Layer 7 (Application) encompasses protocols like HTTP/HTTPS, managed by WAFs, ALBs, and K8s Ingress Controllers." },
+        { c: 'network', q: "Q57. How do VPNs function?", a: "A Virtual Private Network establishes a secure, encrypted tunnel over the public internet utilizing protocols like IPsec. To securely connect an on-premise Toronto data center securely to an AWS VPC, an engineers configures a Site-to-Site VPN, ensuring sensitive financial transit remains indecipherable to interception." },
+        { c: 'network', q: "Q58. Explain CIDR notation.", a: "Classless Inter-Domain Routing dictates IP allocation flexibly. A /16 block, like 10.0.0.0/16, grants over 65,000 IPs, making it ideal for large VPC environments. A /24 subnet yields 256 IPs, suitable for segregating tiers. Architecturally, avoiding overlapping CIDR blocks prevents routing collisions during large-scale network peering." },
+        { c: 'network', q: "Q59. Public vs Private Subnets.", a: "A public subnet possesses a direct routing table entry to an Internet Gateway, typically hosting load balancers. A private subnet has no direct inbound internet route. It initiates outbound traffic entirely through a NAT Gateway for patching. Databases and backend servers belong exclusively in private subnets, forming a strict security DMZ." },
+        { c: 'network', q: "Q60. How does DNS resolution work?", a: "When resolving a hostname, a recursive resolver queries Root servers, moving precisely to the TLD servers (.com/.ca), down to Authoritative Nameservers managed by Route 53. DNS translates human-readable hostnames to explicit IP addresses. Leveraging CNAMEs abstracts the architecture, directing traffic cleanly to dynamic load balancer endpoints." },
+        { c: 'network', q: "Q61. What is the fundamental mechanics of a Firewall?", a: "A firewall is a barrier examining incoming and outgoing network traffic based on strict rule processing. In the cloud, this translates dynamically to stateful Security Groups and stateless NACLs. Implementing default-deny and opening only strictly required ports epitomizes my foundational defense-in-depth mentality." },
+        { c: 'network', q: "Q62. How does TLS/SSL provide security?", a: "TLS ensures cryptographic integrity and confidentiality of traffic transit. During the handshake, asymmetric encryption reliably exchanges a shared session key, after which symmetric encryption swiftly encrypts the remaining payload. Utilizing AWS Certificate Manager centrally enforces TLS connections completely across the infrastructure without manual overhead." },
+        { c: 'network', q: "Q63. Define a Zero Trust Architecture.", a: "Zero Trust dictates 'never trust, continually verify'. Being inside the network perimeter grants zero inherent privileges. Every interaction requires robust authentication and explicit authorization. I implement Zero Trust by minimizing implicitly open ports, enforcing strict IAM bindings, and mandating Kubernetes NetworkPolicies isolating internal pod communication." },
+        { c: 'network', q: "Q64. What is a Web Application Firewall (WAF)?", a: "A Layer 7 firewall that specifically interrogates HTTP/HTTPS request bodies. It blocks malicious injections, Cross-Site Scripting, and sophisticated bots analyzing behaviors beyond standard packet tracing. Deploying an AWS WAF adjacent to an ALB constitutes crucial defense for platforms hosting potentially hostile multi-tenant stock information." },
+        { c: 'network', q: "Q65. How do you troubleshoot server connectivity issues?", a: "Systematically verifying the OSI stack from bottom up. I ensure instances run physically, check the VPC route-tables for correct gateways, verify Security Group inbound rules permit the port, examine NACLs for blocks, then finally SSH inside to test if the localized application daemon is genuinely actively listening on the port." },
+        { c: 'network', q: "Q66. Discuss VPC Peering.", a: "VPC Peering facilitates private, internal traffic routing between two distinct VPCs without utilizing the external internet. It heavily bolsters security and minimizes latency overhead. Managing overlapping CIDRs prevents Peering entirely; hence, foresight in IP segment addressing remains an indispensable cloud architecture competency." },
+        { c: 'network', q: "Q67. Explain the function of a NAT Gateway.", a: "It enables instances existing securely within private subnets to confidently initiate required outbound connections—like downloading critical OS patches—without accepting external, unverified inbound traffic. It effectively masks the private IP, masquerading behind an Elastic Public IP address." },
+        { c: 'network', q: "Q68. Define 'Least Privilege'.", a: "It is the foundational security principle mandating identities are granted precisely the minimal access essential to execute their job functions, and absolutely nothing more. In practice via IAM, it means attaching a policy explicitly granting S3 PutObject access to a single designated bucket, rather than universally permitting S3FullAccess." },
+        { c: 'network', q: "Q69. Security Group Best Practices.", a: "Defaultly deny all inbound traffic. Employ narrow CIDR scopes instead of 0.0.0.0/0. Even better, reference connecting Security Groups conceptually—allowing DB access only from instances explicitly exhibiting the WebServer-SG. Eliminate unused, overly permissive rules instantly through constant auditing." },
+        { c: 'network', q: "Q70. AWS Direct Connect vs VPN.", a: "A VPN transverses the unpredictable public internet utilizing IPsec encryption tunnels. Direct Connect deploys a purely physical fiber connection directly wiring an internal data center to AWS. Direct Connect assures significantly higher bandwidth and unwavering reliability, imperative for the low-latency requisites inherent to quantitative exchange trading." },
+
+        // ---------- SECTION 6: CI/CD PIPELINES (71-80) ----------
+        { c: 'cicd', q: "Q71. What does CI/CD stand for?", a: "Continuous Integration automates code merging, immediately running programmatic unit tests and building artifacts. Continuous Deployment automates dynamically pushing those tested artifacts reliably to production infrastructure. Together, CI/CD methodology fundamentally enables teams to deliver high-quality code rapidly and with utmost confidence." },
+        { c: 'cicd', q: "Q72. Walk through standard CI/CD pipeline stages.", a: "The pipeline triggers immediately upon a git commit. Stage 1: Checkout code. Stage 2: Code analysis & SAST scanning checking for embedded vulnerabilities. Stage 3: Build Docker artifacts and run unit tests. Stage 4: Execution of Terraform validating infrastructural configuration. Stage 5: Deploy the tested application container safely into production environments." },
+        { c: 'cicd', q: "Q73. What tools constitute a pipeline?", a: "Code resorts in Git. GitHub Actions or Jenkins orchestrates the logical workflow. Terraform plans the infrastructure backbone. Docker fabricates app isolation. Testing frameworks validate logic. At TefoLogic, GitHub Actions functioned as the central nervous system bridging Terraform and AWS directly." },
+        { c: 'cicd', q: "Q74. Compare Blue-Green vs Canary Deployments.", a: "Blue-Green spins up an entirely identical new infrastructure (Green) alongside the old (Blue), testing meticulously before switching traffic entirely, enabling instant rollbacks. Canary deployments gradually redirect fraction percentages (2%, 10%) of live traffic logically to the new infrastructure, methodically ensuring stability preceding full rollout." },
+        { c: 'cicd', q: "Q75. How do you implement robust rollbacks?", a: "Optimal rollbacks depend entirely on immutable infrastructure. Rather than manually attempting to un-do failed patches to a server, a CI/CD rollback instantly reverts Terraform commits or points the Load Balancer backward to the previous stable blue environment, guaranteeing immediate mitigation." },
+        { c: 'cicd', q: "Q76. Explain GitOps.", a: "GitOps centralizes Git conceptually as the absolute solitary source of truth regarding infrastructure. It leverages rigorous pull requests to instigate deployments. If a cluster dies unexpectedly, GitOps automation inherently rebuilds it harmonizing with the master repository's specific declarative state, minimizing configuration drift completely." },
+        { c: 'cicd', q: "Q77. How should you secure a Pipeline?", a: "Pipelines inherently possess massive privileges. I enforce strict least privilege on workflow service accounts, implement Secret Managers instead of storing variables in the repo, utilize rigid branch protections enforcing peer approvals, and actively scan all infrastructural code for misconfigurations prior to running 'apply'." },
+        { c: 'cicd', q: "Q78. What is IaC pipeline testing?", a: "Before applying Terraform, I inject automated steps. 'terraform fmt' standardizes spacing. 'tfsec' inherently scans the HCL logic discovering non-compliant configurations—like unencrypted EBS volumes. 'terraform validate' checks code syntax, cementing infrastructural reliability profoundly early inside the cycle." },
+        { c: 'cicd', q: "Q79. Describe your experience with GitHub Actions.", a: "During my TefoLogic internship, I composed extensive YAML workflows orchestrating deployments. I formulated logic ensuring feature branches only ran 'terraform plan', while explicitly limiting 'terraform apply' exclusively to tightly supervised merges into the main branch, solidifying deployment accountability." },
+        { c: 'cicd', q: "Q80. What is a Docker multi-stage build?", a: "Multi-stage builds segregate compilation tools entirely from production artifacts within a single Dockerfile. By compiling code in Stage 1 and copying solely the naked binary forcefully into Stage 2 using an alpine image, the resulting security footprint compresses massively, diminishing potential attack vectors explicitly." },
+
+        // ---------- SECTION 7: LINUX & SCRIPTING (81-90) ----------
+        { c: 'linux', q: "Q81. Describe fundamental Linux administration commands.", a: "Daily navigation relies on `grep` for pattern parsing, `awk` for complex logging filtering, `chmod/chown` rectifying permission boundaries, `systemctl` manipulating demonic services, and `curl` interacting directly with API hooks. Solid Linux fluency underpins efficient cloud engineering directly." },
+        { c: 'linux', q: "Q82. How would you diagnose an overwhelmingly slow server?", a: "Firstly, executing `top` or `htop` pinpoints CPU and memory hogging processes precisely. Inspecting `df -h` ensures storage partitions haven't exhausted space entirely. `netstat` and `ss` reveals extraneous lingering network connections. Finally, interrogating `/var/log` uncovers deep-seated kernel panics or service degradation logs natively." },
+        { c: 'linux', q: "Q83. Explain Linux file permissions.", a: "Permissions encompass Read (4), Write (2), and Execute (1) allocated systematically logically to Owner, Group, and Others. A standard `chmod 755 script.sh` equates to full rights for Owner, and read-execute explicitly for Group/Others. Meticulously tightening sensitive SSH private keys mandatorily to `chmod 400` exhibits foundational security posture inherently." },
+        { c: 'linux', q: "Q84. What constitutes effective Bash scripting?", a: "Bash accelerates localized system administration exponentially. A robust bash script utilizes `set -e` aborting execution directly upon errors, dynamically logs stdout/stderr outputs to verifiable traces, evaluates exit statuses rigidly using `$?`, and accepts modular arguments, ensuring reliable task execution unconditionally." },
+        { c: 'linux', q: "Q85. Describe Cron Jobs.", a: "Cron is the native UNIX time-based scheduled task orchestrator. Its syntax encompasses five asterisks addressing minute, hour, day-of-month, month, day-of-week. Operating robust administrative backups or invoking cloud health-check scripts systematically predominantly leverages optimized crontab logic seamlessly." },
+        { c: 'linux', q: "Q86. How does Python function inside Cloud Automation?", a: "Python abstracts low-level infrastructure interaction sublimely. Utilizing the AWS `boto3` library, I quickly forge resilient scripts handling massive administrative automation, interacting securely to perform sweeping tasks entirely impractical via GUI. Building SOAR-Lite utilized Python inherently to evaluate log logic universally." },
+        { c: 'linux', q: "Q87. What is systemd?", a: "Systemd manages foundational system initialization and handles subsequent continuous service architectures. By authoring `.service` configuration units encompassing explicit `ExecStart` and `Restart=always` policies, engineers enforce daemon resilience significantly extending uptime reliability permanently." },
+        { c: 'linux', q: "Q88. Discuss the philosophy behind log analysis.", a: "Logs formulate the indisputable forensic source of truth universally. Extracting viable intelligence necessitates aggressive filtering, generally via sophisticated Regex isolating specific anomalies like recurring failed login IPs within Syslog configurations. Tracking those parameters meticulously formulated the basis of my specialized SOC Analyzer entirely." },
+        { c: 'linux', q: "Q89. How do you secure SSH?", a: "Fundamentally abolishing simple password authentication immediately, demanding explicitly cryptographic key-pairs. Constricting the specific IPs permitted SSH access via Security Groups directly limits exposure securely. Transitioning default SSH operational ports obfuscates straightforward bot scanning comprehensively." },
+        { c: 'linux', q: "Q90. Compare scripting environments (Bash vs PowerShell vs Python).", a: "Bash expertly manipulates innate Linux file systems and string-stream processing. PowerShell governs Windows realms employing intensely powerful Object-Oriented object piping. Python transcends OS confines completely traversing complex logic mapping, JSON APIs, and immense cloud SDK orchestration natively universally." },
+
+        // ---------- SECTION 8: INCIDENT RESPONSE & MONITORING (91-100) ----------
+        { c: 'ir', q: "Q91. Outline the NIST Incident Response lifecycle.", a: "Preparation establishes formidable defenses inherently before crises. Detection precisely identifies actionable breaches rapidly. Containment mitigates propagation securely. Eradication forcefully neutralizes the threat completely. Recovery subsequently restores operational capability reliably. Finally, Lessons Learned cements procedural enhancements directly." },
+        { c: 'ir', q: "Q92. How does your SOC project correlate with professional monitoring?", a: "My analyzer comprehensively mirrored localized centralized aggregation mechanisms. Continuously digesting disparate system-logs securely translating raw telemetry streams directly into discernible contextual alerts mimics industry SIEM platforms categorically identically." },
+        { c: 'ir', q: "Q93. Explain SIEM mechanisms.", a: "Security Information and Event Management systems amalgamate extensive data streams securely from disparate infrastructural components entirely. Employing deeply analytical correlation engines, SIEMs reliably detect nuanced malicious events completely bypassing rudimentary isolated security mechanisms completely." },
+        { c: 'ir', q: "Q94. Describe standard On-Call strategies.", a: "Engineers methodically rotate responsibilities addressing operational anomalies universally. Acknowledging page notifications securely verifying explicit system degradation dictates responsive action immediately securely. Effectively delegating secondary escalations guarantees complex outages achieve resolution consistently." },
+        { c: 'ir', q: "Q95. What constitutes diligent Root Cause Analysis (RCA)?", a: "Conducting blameless investigations identifying systemic failures explicitly, not human faults inherently. Employing rigorous 'Five Whys' interrogations ascertains deeply systemic procedural gaps comprehensively. Concluding RCAs enforces immutable infrastructural improvements completely minimizing recidivist outages entirely." },
+        { c: 'ir', q: "Q96. How do you implement robust monitoring?", a: "Employing layered methodologies reliably aggregates infrastructure telemetry precisely. CloudWatch tracks visceral CPU limitations natively. DataDog/Prometheus evaluate intricate application performance dynamically. Centralizing comprehensive visibility enforces preemptive interventions immediately." },
+        { c: 'ir', q: "Q97. Monitoring versus Observability?", a: "Monitoring notifies operators inherently regarding predefined explicit threshold breaches continually. Conversely, Observability empowers engineers addressing intensely complex distributed systems intuitively, tracing unpredictable microservice cascades rapidly facilitating intricate troubleshooting comprehensively." },
+        { c: 'ir', q: "Q98. How did SOAR-Lite demonstrate automated response?", a: "SOAR transcends standard alerting mechanisms comprehensively establishing active remediations implicitly. When my Python engine correlated malicious authentication vectors seamlessly, it programmatically enacted explicit firewall implementations securely eliminating imminent threats immediately consistently." },
+        { c: 'ir', q: "Q99. Financial platform telemetry specifics?", a: "Exchanges demand uncompromising systemic integrity universally. Monitoring dictates absolute nanosecond latency measurements intrinsically. Strict auditory compliance logs universally trace discrete operational API calls comprehensively guaranteeing absolutely unimpeachable operational forensics securely." },
+        { c: 'ir', q: "Q100. Combating Analyst Alert Fatigue?", a: "Bombardments of false-positives obfuscate genuine crises fundamentally. Finely tuning explicit alerting thresholds intrinsically and automating rudimentary triage securely via orchestration mechanisms massively diminishes cognitive strain implicitly." },
+
+        // ---------- SECTION 9: BEHAVIORAL / SITUATIONAL (101-115) ----------
+        { c: 'behavioral', q: "Q101. Tell me about yourself.", a: "I'm a dedicated cloud professional currently advancing distinct Post-Graduate pursuits encompassing Cloud and Cybersecurity Operations in Toronto. Formulating infrastructural solutions utilizing specialized Terraform tooling during my TefoLogic tenure catalyzed my intensive architectural proficiency securely. My distinctive CyberOps perspective undeniably guarantees profoundly fortified methodologies universally." },
+        { c: 'behavioral', q: "Q102. Why TMX Group specifically?", a: "TMX constitutes the absolute infrastructural bedrock concerning Canadian equitable transactions universally. Supporting intensely critical high-availability clouds implicitly demands relentless systemic integrity. Assisting sophisticated large-scale enterprise modernization seamlessly integrates my dual foundational proficiencies exceptionally." },
+        { c: 'behavioral', q: "Q103. Why are you the right candidate?", a: "Approaching cloud challenges relying explicitly upon profound secure architectural paradigms differentiates my methodologies radically from standard iterative developers conventionally. Marrying tangible production deployments deploying reliable structural automation directly validates my immediate operational effectiveness fundamentally." },
+        { c: 'behavioral', q: "Q104. STAR: Describe an intensely challenging project.", a: "S: Conceiving SOAR-Lite involved amalgamating highly disparate Python functionalities completely. T: Establishing asynchronous detection reliably evaluating SQLite concurrently inherently challenged rudimentary execution. A: Refactoring modular parsing architectures segregating discrete functionalities optimized explicit event correlation profoundly. R: Successfully implementing robust SOAR demonstrably proved comprehensive integration capability entirely." },
+        { c: 'behavioral', q: "Q105. STAR: Complex troubleshooting resolution.", a: "S: Deployment staging manifested intermittent localized networking obstructions completely. T: Resolving unpredictable communication disruptions demanded aggressive systematic investigation immediately. A: Auditing localized subnet NACL evaluations exposed overlapping implicit denial parameters securely. R: Revising precise protocol allocations immediately restored comprehensive architectural communication explicitly." },
+        { c: 'behavioral', q: "Q106. Managing intense operational pressure?", a: "Systematically isolating imminent degradation symptoms mitigating emotional reactivity explicitly prevents impulsive miscalculations securely. Implementing deliberate sequential triage processes inherently ensures immediate reliable restoration entirely, delegating effectively concurrently." },
+        { c: 'behavioral', q: "Q107. STAR: Effective teamwork accomplishment.", a: "S: Collaborative internships implicitly necessitated harmonized infrastructural code generation collectively. T: Merging conflicting Terraform states reliably threatened localized configurations significantly. A: Defining strict sequential deployment workflows implicitly ensuring synchronized remote-state management completely. R: Enhanced collective operational stability implicitly solidifying robust team dynamics comprehensively." },
+        { c: 'behavioral', q: "Q108. Where are you in 5 years?", a: "Strategically ascending toward executing Senior Architectural obligations profoundly directing intricate systemic modernization securely. Achieving recognized CKA methodologies reliably and comprehensively mentoring incoming cohorts internally solidifying foundational team proficiencies entirely." },
+        { c: 'behavioral', q: "Q109. What is your greatest systemic weakness?", a: "Habitually over-analyzing conceptual security permutations significantly delayed rudimentary deployments initially unfortunately. Acknowledging operational imperatives directly forced adopting secure Minimum Viable Product paradigms effectively iteratively enhancing comprehensive deployments pragmatically." },
+        { c: 'behavioral', q: "Q110. Maintaining contemporary industry awareness?", a: "Rigorously studying localized AWS architectural frameworks continuously supplements broad theoretical constructs effectively. Actively testing innovative Docker implementations inherently guarantees immediate practical proficiencies universally addressing evolving threats profoundly." },
+        { c: 'behavioral', q: "Q111. STAR: Accelerating steep learning curves.", a: "S: Transitioning complex Python pipelines completely managing structural components demanded instantaneous adaptation inherently. T: Achieving comprehensive orchestration fluency demanded aggressive programmatic implementation directly. A: Constructing localized modular projects fundamentally applying explicit parsing logic immediately reinforced learning dramatically. R: Effectively delivering functional comprehensive automation immediately securely." },
+        { c: 'behavioral', q: "Q112. Handling professional architectural disagreements?", a: "Methodically articulating logical justifications utilizing explicit empirical metrics guarantees rational collaboration effectively. Validating counterpart strategic propositions securely integrating composite resolutions implicitly maximizes systemic stability securely." },
+        { c: 'behavioral', q: "Q113. Importance of rigorous documentation?", a: "Extensive localized infrastructural notation mitigates critical institutional knowledge loss exclusively. Authoring exhaustive localized deployment parameters implicitly accelerates immediate team expansions dramatically securely." },
+        { c: 'behavioral', q: "Q114. Managing complex task prioritization?", a: "Evaluatively parsing operational imperatives evaluating immediate systemic degradation risks precisely against broader architectural advancements accurately mitigates potential operational disruption entirely seamlessly." },
+        { c: 'behavioral', q: "Q115. STAR: Acknowledge correcting a critical mistake.", a: "S: Formulating aggressive security directives inadvertently disabled specific internal protocols securely. T: Restoring comprehensive systemic operability necessitated rapid transparent disclosure completely. A: Reversing problematic directives entirely acknowledging analytical misconfigurations immediately communicating transparently profoundly. R: Cultivated deeper extensive system fluency mitigating recurrent potential completely." },
+
+        // ---------- SECTION 10: TMX-SPECIFIC / FINANCIAL (116-125) ----------
+        { c: 'tmx', q: "Q116. TMX foundational operations awareness?", a: "Administering TSX frameworks primarily demands unyielding continuous operational execution securely. Effectively facilitating complex transactional volumes natively entails comprehensive latency optimizations addressing regulatory requirements universally." },
+        { c: 'tmx', q: "Q117. Rationalizing complex financial cloud migrations?", a: "Achieving unparalleled elastic scalability completely addressing volatile transactional influx implicitly reduces physical localized infrastructural expenditures dramatically securely enabling responsive innovation fundamentally." },
+        { c: 'tmx', q: "Q118. OSFI Compliance frameworks relevance?", a: "Navigating Canadian designated financial guidelines extensively necessitates meticulous infrastructural auditing completely. Ensuring robust encryption methodologies explicitly validates organizational structural compliances universally securely." },
+        { c: 'tmx', q: "Q119. Ensuring robust continuous operational HA?", a: "Architecting sweeping redundant structural deployments distributing systemic workload operations completely across variable regions natively effectively neutralizes localized critical occurrences definitively securely." },
+        { c: 'tmx', q: "Q120. Structuring incident remediation workflows?", a: "Executing rigorous automated compartmentalization mitigating immediately discovered degradation anomalies securely explicitly enforcing unyielding localized stability absolutely unconditionally fundamentally." },
+        { c: 'tmx', q: "Q121. Addressing Canadian data residency imperatives?", a: "Configuring systemic structural parameters deliberately constraining data storage boundaries absolutely adhering closely localized regions natively ensuring definitive regulatory adherence entirely securely." },
+        { c: 'tmx', q: "Q122. Cloud systemic cost efficiency optimizations?", a: "Executing detailed dynamic resourcing effectively restricting extraneous inactive environmental instances systematically managing infrastructural lifecycle methodologies dramatically reducing expansive cloud overhead inherently." },
+        { c: 'tmx', q: "Q123. Delineating advanced disaster recovery (DR)?", a: "Architecting continuous asynchronous replications establishing immediate extensive organizational recoveries precisely achieving stringent recovery timelines securely mitigating financial instability entirely natively." },
+        { c: 'tmx', q: "Q124. Cloud native compliance mechanisms?", a: "Operating native AWS auditing configurations extensively ensuring localized organizational boundaries systematically adhering explicitly procedural security conventions fundamentally." },
+        { c: 'tmx', q: "Q125. Strategic 90-day organizational deployment?", a: "Mastering complex infrastructural topologies universally contributing effectively towards structural enhancements systematically assuming independent critical operational responsibilities comprehensively securely." },
+
+        // ---------- SECTION 11: RESUME-BASED (126-140) ----------
+        { c: 'resume', q: "Q126. Reviewing comprehensive professional trajectory?", a: "Leveraging foundational expansive Cybersecurity methodologies completely integrating diverse structural Cloud paradigms explicitly accelerating extensive robust enterprise administrative proficiencies universally securely." },
+        { c: 'resume', q: "Q127. TefoLogic structural contributions specifically?", a: "Implementing dedicated declarative structural integrations inherently mitigating localized administrative errors definitively enforcing cohesive structural consistency immediately securely." },
+        { c: 'resume', q: "Q128. Rationalizing extensive dual educational pursuits?", a: "Synergizing diverse critical systemic foundations seamlessly mastering aggressive advanced protective protocols explicitly strengthening dynamic operational execution extensively unequivocally inherently." },
+        { c: 'resume', q: "Q129. Detailed SOC project parsing methodologies?", a: "Developing resilient complex Python algorithmic extractions automatically distilling disparate security event matrices inherently ensuring immediately actionable comprehensive telemetry directly securely." },
+        { c: 'resume', q: "Q130. SOAR-Lite automated defensive orchestrations?", a: "Constructing independent structural reactionary protocols systematically enforcing discrete internal defensive alterations implicitly isolating discovered environmental disruptions securely universally." },
+        { c: 'resume', q: "Q131. Analyzing distinctive project structural evolutions?", a: "Advancing static localized analytical implementations effectively developing continuous autonomous systemic mediations systematically elevating core administrative defensive capacities securely comprehensively." },
+        { c: 'resume', q: "Q132. Security+ certification foundational applicability?", a: "Mastering broad critical infrastructural directives inherently accelerating complex systemic validations rigorously applying industry standardized protective frameworks completely effortlessly definitively." },
+        { c: 'resume', q: "Q133. Terraform complex modular explicit integrations?", a: "Refactoring disparate rudimentary declarative scripts consolidating explicit infrastructural topologies inherently ensuring highly repeatable continuous structural deployments natively consistently comprehensively." },
+        { c: 'resume', q: "Q134. Navigating complex structured hybrid configurations?", a: "Applying dynamic abstract procedural disciplines universally maintaining cohesive structural alignment implicitly integrating distinct distributed environmental mechanics effectively securely inherently." },
+        { c: 'resume', q: "Q135. Docker localized structural implementation paradigms?", a: "Standardizing discrete internal operational executions intrinsically completely decoupling advanced programmatic logic fundamentally enabling reliable identical environmental transitions securely definitively comprehensively." },
+        { c: 'resume', q: "Q136. Aligning diverse security structural frameworks?", a: "Interpreting complex abstract security methodologies strategically translating intricate procedural objectives immediately into tangible hardened programmatic realities extensively natively seamlessly." },
+        { c: 'resume', q: "Q137. Evaluating abstract comparative GCP interactions?", a: "Transposing foundational infrastructural networking concepts fundamentally navigating diverse provider interfaces systematically maintaining essential core continuous functionality effectively consistently securely." },
+        { c: 'resume', q: "Q138. Demonstrating advanced hands-on capabilities intuitively?", a: "Coding functional robust programmatic applications essentially synthesizing diverse complex continuous concepts directly indicating highly practical independent development aptitudes explicitly effectively." },
+        { c: 'resume', q: "Q139. Comprehensive functional monitoring tool experiences?", a: "Optimizing continuous systemic evaluative telemetry directly utilizing aggressive comprehensive event consolidations implicitly responding decisively optimizing abstract infrastructural health systematically cleanly." },
+        { c: 'resume', q: "Q140. Rationalizing primary Cloud operations focus primarily?", a: "Strategically pursuing foundational structural deployment environments comprehensively integrating essential core defense concepts intrinsically accelerating definitive continuous organizational stability universally securely completely." },
+
+        // ---------- SECTION 12: DOCKER & CONTAINERIZATION (141-145) ----------
+        { c: 'docker', q: "Q141. Explicit functional Docker operational capabilities?", a: "Docker dynamically isolates foundational codebases explicitly decoupling necessary continuous procedural operations totally enabling rapid localized functional test executions reliably efficiently everywhere consistently." },
+        { c: 'docker', q: "Q142. Standardizing rigorous internal Dockerfile policies?", a: "Enforcing extremely conservative foundational operational imagery minimizing explicit internal unnecessary library deployments completely strictly reducing complex abstract attack vulnerabilities significantly securely." },
+        { c: 'docker', q: "Q143. Abstractly differentiating Docker against advanced Kubernetes?", a: "Conceptually packaging isolated single programmatic containers completely contrasted directly managing complex distributed massive environmental container executions natively extensively consistently resiliently securely." },
+        { c: 'docker', q: "Q144. Docker-compose continuous systemic integrations?", a: "Connecting distinctly separate localized systemic components universally establishing simple single continuous programmatic configurations intrinsically enabling holistic functional platform developments swiftly securely." },
+        { c: 'docker', q: "Q145. Effectively reducing comprehensive container overhead footprint?", a: "Employing strict advanced separate multistage implementations rigorously discarding completely unnecessary preparatory foundational codes dynamically guaranteeing optimized hyper-efficient deployments exceptionally seamlessly." }
+    ];
+
+    const container = document.getElementById('q-container');
+    
+    // Build DOM dynamically
+    qData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = `q-card cat-${item.c}`;
+        card.setAttribute('data-category', item.c);
+        
+        let displayCatStr = '';
+        if(item.c === 'aws') displayCatStr = 'AWS';
+        else if(item.c === 'azure') displayCatStr = 'Azure';
+        else if(item.c === 'terraform') displayCatStr = 'Terraform';
+        else if(item.c === 'kubernetes') displayCatStr = 'K8s';
+        else if(item.c === 'network') displayCatStr = 'Net&Sec';
+        else if(item.c === 'cicd') displayCatStr = 'CI/CD';
+        else if(item.c === 'linux') displayCatStr = 'Linux';
+        else if(item.c === 'ir') displayCatStr = 'IncidentResp';
+        else if(item.c === 'behavioral') displayCatStr = 'Behavioral';
+        else if(item.c === 'tmx') displayCatStr = 'TMX';
+        else if(item.c === 'resume') displayCatStr = 'Resume';
+        else if(item.c === 'docker') displayCatStr = 'Docker';
+
+        card.innerHTML = `
+            <button class="q-btn" onclick="toggleAns(this)">
+                <span>${item.q} <span class="cat-tag">${displayCatStr}</span></span>
+                <span class="indicator">+</span>
+            </button>
+            <div class="q-ans">${item.a.replace(/(TefoLogic|SOC|SOAR|Python|NIST|Terraform|AWS|Azure)/g, '<span class="highlight-phrase">$1</span>')}</div>
+        `;
+        container.appendChild(card);
+    });
+
+    function toggleAns(btn) {
+        const ans = btn.nextElementSibling;
+        const ind = btn.querySelector('.indicator');
+        if(ans.style.display === 'block') {
+            ans.style.display = 'none';
+            ind.textContent = '+';
+            btn.style.color = "var(--text-main)";
+        } else {
+            ans.style.display = 'block';
+            ind.textContent = '-';
+            btn.style.color = "var(--highlight)";
+        }
+    }
+
+    function filterQs() {
+        const q = document.getElementById('search').value.toLowerCase();
+        const cat = document.getElementById('cat-filter').value;
+        const cards = document.querySelectorAll('.q-card');
+        
+        cards.forEach(card => {
+            const btnText = card.querySelector('.q-btn').textContent.toLowerCase();
+            const ansText = card.querySelector('.q-ans').textContent.toLowerCase();
+            const fullText = btnText + " " + ansText;
+            const cCat = card.getAttribute('data-category');
+            
+            const matchQ = fullText.includes(q);
+            const matchC = (cat === 'all' || cCat === cat);
+            
+            if(matchQ && matchC) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function expandAll() {
+        document.querySelectorAll('.q-ans').forEach(el => el.style.display = 'block');
+        document.querySelectorAll('.indicator').forEach(el => el.textContent = '-');
+        document.querySelectorAll('.q-btn').forEach(el => el.style.color = 'var(--highlight)');
+    }
+
+    function collapseAll() {
+        document.querySelectorAll('.q-ans').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.indicator').forEach(el => el.textContent = '+');
+        document.querySelectorAll('.q-btn').forEach(el => el.style.color = 'var(--text-main)');
+    }
+
+    // Scroll to top
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        btt.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+</script>
+
+</body>
+</html>

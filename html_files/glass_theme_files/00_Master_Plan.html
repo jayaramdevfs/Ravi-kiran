@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERVIEW CRACKING MASTER PLAN</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap');
+        /* Premium Aurora Glass Theme */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-border-top: rgba(255, 255, 255, 0.25);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --search-outline: #38bdf8;
+            --success: #10b981;
+            --danger: #f43f5e;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; color: var(--text-main); font-weight: 600; margin-top: 0; margin-bottom: 15px; letter-spacing: -0.5px; }
+        a { color: var(--accent); text-decoration: none; }
+        pre, code { font-family: 'SF Mono', Consolas, monospace; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 20px 0 rgba(129, 140, 248, 0.2); }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; background-color: transparent; }
+        th, td { padding: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: left; vertical-align: top; }
+        th { background-color: rgba(255,255,255,0.1); color: var(--text-main); font-weight: 600; }
+        td { color: var(--text-muted); }
+        .collapsible { cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; background: rgba(255,255,255,0.1); color: var(--text-main); border: 1px solid var(--glass-border); backdrop-filter: blur(8px); font-weight: bold; border-radius: 4px; margin-bottom: 5px; font-size: 1.1rem; transition: background-color 0.2s; }
+        .active, .collapsible:hover { background-color: var(--accent); color: #fff;}
+        .content { padding: 18px; display: none; overflow: hidden; background: rgba(0,0,0,0.2); border-radius: 0 0 12px 12px; margin-bottom: 15px; border-left: 2px solid var(--accent); }
+        nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+        .nav-btn { 
+            background: transparent; color: var(--text-muted); 
+            border: 1px solid transparent; 
+            padding: 8px 18px; border-radius: 24px; cursor: pointer; text-decoration: none; 
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; 
+        }
+        .nav-btn.active, .nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); border-color: var(--glass-border); box-shadow: 0 0 15px var(--accent-glow); }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; color: var(--text-muted); }
+        strong { color: var(--text-main); }
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; border-color: #fff; border: none; padding: 12px 18px; border-radius: 5px; cursor: pointer; z-index: 99; font-weight: bold; border: 1px solid var(--accent-secondary); box-shadow: none; }
+        #back-to-top:hover { opacity: 0.9; }
+        footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; }
+        .highlight { border-left: 2px solid var(--accent); background-color: rgba(56, 189, 248, 0.1); padding: 1rem; border-radius: 0 4px 4px 0; }
+        .tag { display: inline-block; padding: 3px 8px; background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); border-radius: 12px; font-size: 0.8rem; margin: 2px; }
+        @media print {
+            body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+            .card, .content, .highlight { box-shadow: none; border: 1px solid #ccc; background-color: #fff; color: #000; break-inside: avoid; }
+            h1, h2, h3, h4, strong { color: black; }
+            th { background-color: #e8e4dc; color: black; border-color: #ccc; }
+            td { border-color: #ccc; color: #333; }
+            nav.sticky, #back-to-top { display: none; }
+            .content { display: block !important; }
+            .collapsible { background-color: #e8e4dc; color: black; border: 1px solid #ccc; }
+        }
+        @media (max-width: 768px) {
+            .nav-btn { 
+            background: transparent; color: var(--text-muted); 
+            border: 1px solid transparent; 
+            padding: 8px 18px; border-radius: 24px; cursor: pointer; text-decoration: none; 
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; 
+        }
+            table, thead, tbody, th, td, tr { display: block; }
+            th { position: absolute; top: -9999px; left: -9999px; }
+            tr { border: 1px solid var(--accent-secondary); margin-bottom: 10px; }
+            td { border: none; position: relative; padding-left: 50%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            td:before { position: absolute; top: 12px; left: 12px; width: 45%; padding-right: 10px; white-space: nowrap; font-weight: bold; color: var(--text-main); }
+            td:nth-of-type(1):before { content: "Header 1"; } 
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn active">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Introduction</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Project Deep Dive</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Questions Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Study Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1>INTERVIEW CRACKING MASTER PLAN</h1>
+        <p>Strategic Blueprint for Cloud Engineer (R-5764) at TMX Group</p>
+    </header>
+
+    <div class="card">
+        <h2>1. TARGET ROLE SUMMARY</h2>
+        <table>
+            <tr>
+                <th style="width: 25%;">Position</th>
+                <td><strong>Cloud Engineer (R-5764)</strong></td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>TMX Group (TSX, TSXV, Montreal Exchange)</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>Toronto, 100 Adelaide St W (Hybrid, 2-3 days office)</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>CAD $100,000 - $115,000 / year</td>
+            </tr>
+            <tr>
+                <th>Key Focus</th>
+                <td>Cloud infrastructure, reliability, modernization across AWS/Azure, High Availability</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>2. CANDIDATE PROFILE</h2>
+        <table>
+            <tr>
+                <th style="width: 25%;">Name</th>
+                <td><strong>Ravi Kiran Kambhampati</strong></td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>Toronto (Authorized to work in Canada)</td>
+            </tr>
+            <tr>
+                <th>Education</th>
+                <td>
+                    <strong>Post-Grad CloudOps</strong> at York University (Sept 2025 - Apr 2026)<br>
+                    <strong>Post-Grad CyberSecurity Ops</strong> at York University (Jan - Sept 2025)
+                </td>
+            </tr>
+            <tr>
+                <th>Experience</th>
+                <td>Cloud Engineer Intern at TefoLogic (Apr - Jul 2024)<br><em>Production environment: AWS, Terraform, GitHub Actions</em></td>
+            </tr>
+            <tr>
+                <th>Projects</th>
+                <td>SOC Threat Detection Log Analyzer, SOAR-Lite Platform</td>
+            </tr>
+            <tr>
+                <th>Certifications</th>
+                <td>CompTIA Security+ (In Progress)</td>
+            </tr>
+            <tr>
+                <th>Skills</th>
+                <td>
+                    <span class="tag">Python</span> <span class="tag">Bash</span> <span class="tag">PowerShell</span>
+                    <span class="tag">AWS</span> <span class="tag">Terraform</span> <span class="tag">Docker</span>
+                    <span class="tag">SIEM</span> <span class="tag">NIST</span> <span class="tag">ISO 27001</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>3. GAP ANALYSIS & STRATEGY</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>JD Requirement</th>
+                    <th>Ravi's Level</th>
+                    <th>Gap</th>
+                    <th>Strategy to Bridge</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>2-4 yrs experience</strong></td>
+                    <td>4-mo internship + projects</td>
+                    <td><span style="color:#df7c58; font-weight:bold;">BIG</span></td>
+                    <td>Frame as <em>high-impact production experience</em> + intensive academic labs + hands-on architecture projects.</td>
+                </tr>
+                <tr>
+                    <td><strong>AWS/Azure</strong></td>
+                    <td>AWS: IAM, EC2, CloudTrail, S3, Lambda</td>
+                    <td>Moderate</td>
+                    <td>Show deep AWS knowledge, study Azure mapping (e.g. EC2=VM, IAM=Entra).</td>
+                </tr>
+                <tr>
+                    <td><strong>Kubernetes EKS/AKS</strong></td>
+                    <td>Docker only</td>
+                    <td><span style="color:#df7c58; font-weight:bold;">BIG</span></td>
+                    <td>Crash course on K8s concepts (Pods, Services, Deployments, Namespaces).</td>
+                </tr>
+                <tr>
+                    <td><strong>Cloud Certification</strong></td>
+                    <td>Security+ in progress</td>
+                    <td>Gap</td>
+                    <td>"Sitting for Security+ next month, AWS SAA planned immediately after."</td>
+                </tr>
+                <tr>
+                    <td><strong>Terraform</strong></td>
+                    <td>Used at TefoLogic</td>
+                    <td>OK</td>
+                    <td>Prepare specific examples of modules written and state management used.</td>
+                </tr>
+                <tr>
+                    <td><strong>CI/CD</strong></td>
+                    <td>GitHub Actions at TefoLogic</td>
+                    <td>OK</td>
+                    <td>Describe specific pipeline stages (Lint -> Plan -> Apply).</td>
+                </tr>
+                <tr>
+                    <td><strong>Networking</strong></td>
+                    <td>TCP/IP, DNS, HTTP, SGs</td>
+                    <td>Moderate</td>
+                    <td>Study VPN, VPC Peering, NACLs, Azure VNet, Transit Gateway.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>4. COMPETITIVE ADVANTAGES</h2>
+        <ul style="font-size: 1.05rem;">
+            <li><strong>Security + Cloud Bridge:</strong> You don't just build infrastructure; you build it securely. Highly valuable for a stock exchange.</li>
+            <li><strong>Two Specialized Post-Grads:</strong> Demonstrates immense dedication, self-learning capability, and structured knowledge.</li>
+            <li><strong>Production Experience:</strong> Your TefoLogic internship involved real-world impact (Terraform, CI/CD, Client infrastructure).</li>
+            <li><strong>Working Automation Projects:</strong> SOC Threat Detection and SOAR-Lite prove you can script (Python) and automate.</li>
+            <li><strong>Security-First Mindset:</strong> Familiar with NIST and ISO 27001 frameworks. You think in "least privilege".</li>
+            <li><strong>Local Availability:</strong> Already in Toronto, ready for the hybrid 100 Adelaide St W office.</li>
+            <li><strong>Automation Focus:</strong> Proficient in Python, Bash, and PowerShell for automating toil.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>5. 2-DAY SCHEDULE & 1-4-3 RULE</h2>
+        <div class="highlight">
+            <strong>The 1-4-3 Rule of Interview Prep:</strong><br>
+            Spend <strong>1 hour</strong> reviewing the JD/Company, <strong>4 hours</strong> practicing verbal answers aloud, and <strong>3 hours</strong> doing technical gap-filling.
+        </div>
+        <br>
+        <button class="collapsible">DAY 1: Foundation (Expand)</button>
+        <div class="content">
+            <table>
+                <tr><th>Hour</th><th>Focus</th><th>Activity</th></tr>
+                <tr><td>Morning</td><td>Narrative</td><td>Nail the 60/90s intro. Write out STAR stories.</td></tr>
+                <tr><td>Midday</td><td>Projects</td><td>Deep dive into SOC & SOAR-Lite. Be ready to draw architecture.</td></tr>
+                <tr><td>Afternoon</td><td>Tech Gaps</td><td>AWS/Azure mapping, Kubernetes basics crash course.</td></tr>
+                <tr><td>Evening</td><td>TMX Group</td><td>Research TMX frameworks (PCI-DSS, OSFI, SOC2), why cloud for finance.</td></tr>
+            </table>
+        </div>
+        
+        <button class="collapsible">DAY 2: Sharpening (Expand)</button>
+        <div class="content">
+            <table>
+                <tr><th>Hour</th><th>Focus</th><th>Activity</th></tr>
+                <tr><td>Morning</td><td>Mock Ints</td><td>Record yourself answering Qs from the Question Bank.</td></tr>
+                <tr><td>Midday</td><td>Cheat Sheet</td><td>Memorize ports, NIST functions, IaC commands.</td></tr>
+                <tr><td>Afternoon</td><td>Behavioral</td><td>Practice "Weakness", "Handling conflict", "Why Hire You".</td></tr>
+                <tr><td>Evening</td><td>Logistics</td><td>Prep setup, internet check, questions to ask interviewer.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>6. INTERVIEW DAY CHECKLIST</h2>
+        <ul>
+            <li><strong>Environment:</strong> Quiet room, neutral background, good lighting (facing a window or ring light).</li>
+            <li><strong>Tech Check:</strong> Internet speed test, mic check, camera check, laptop plugged into charger.</li>
+            <li><strong>Screen Setup:</strong> Cheat Sheet open on a secondary monitor or split screen (don't make it obvious you're reading).</li>
+            <li><strong>Water:</strong> Glass of water nearby (great for taking a 3-second pause to think before answering).</li>
+            <li><strong>Attire:</strong> Professional top (TMX is corporate). Clean, groomed appearance.</li>
+            <li><strong>Mindset:</strong> You are a capable professional offering your specialized security/cloud skills. Breathe. Smile.</li>
+            <li><strong>Post-Interview:</strong> Send a brief "Thank You" email within 24 hours mentioning 1 specific thing discussed.</li>
+        </ul>
+    </div>
+
+</div>
+
+<button id="back-to-top">↑ Top</button>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | Cloud Engineer Interview | TMX Group | CAD $100K - $115K
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+        
+        const backToTop = document.getElementById("back-to-top");
+        if(backToTop) {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = "block";
+                } else {
+                    backToTop.style.display = "none";
+                }
+            });
+            backToTop.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+    });
+</script>
+</body>
+</html>

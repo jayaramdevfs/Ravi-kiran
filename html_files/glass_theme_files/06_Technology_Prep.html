@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHNOLOGY PREPARATION</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap');
+        /* Premium Aurora Glass Theme */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-border-top: rgba(255, 255, 255, 0.25);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --search-outline: #38bdf8;
+            --success: #10b981;
+            --danger: #f43f5e;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; color: var(--text-main); font-weight: 600; margin-top: 0; margin-bottom: 15px; letter-spacing: -0.5px; }
+        a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1100px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { padding: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: left; vertical-align: top; }
+        th { background-color: rgba(255,255,255,0.1); color: var(--text-main); font-weight: 600; }
+        td { color: var(--text-muted); }
+
+        nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+        .nav-btn { 
+            background: transparent; color: var(--text-muted); 
+            border: 1px solid transparent; 
+            padding: 8px 18px; border-radius: 24px; cursor: pointer; text-decoration: none; 
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; 
+        }
+        .nav-btn.active, .nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); border-color: var(--glass-border); box-shadow: 0 0 15px var(--accent-glow); }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 5px; color: var(--text-muted); }
+        strong { color: var(--text-main); }
+        
+        code { font-family: 'SF Mono', monospace; background: rgba(0,0,0,0.3); padding: 2px 4px; border-radius: 3px; color: #a8dadc;}
+        .section-title { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px; color: #fff; }
+
+        @media print {
+            body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+            .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+            h1, h2, h3, strong, .section-title, code { color: black; }
+            th { background-color: #e8e4dc; color: black; border-color: #ccc; }
+            td { border-color: #ccc; color: #333; }
+            nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Introduction</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Project Deep Dive</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Questions Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Study Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn active">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1>RESUME & JD TECHNOLOGY PREPARATION</h1>
+        <p>Aligning exactly what you know with exactly what TMX needs.</p>
+    </header>
+
+    <h2 class="section-title">PART 1: TECHNOLOGIES ON YOUR RESUME</h2>
+    
+    <div class="card">
+        <h3>A. Security Operations & Technologies</h3>
+        <table>
+            <tr><th width="25%">Concept/Tool</th><th>How you speak to it in an interview</th></tr>
+            <tr>
+                <td><strong>SIEM / Log Analysis</strong></td>
+                <td>"In my Python SOC project, I built a log ingestion pipeline mimicking a SIEM. I parsed <code>/var/log/auth.log</code> to identify IOCs like cross-geo logins using sliding time-windows, directly reflecting how a SIEM correlates events."</td>
+            </tr>
+            <tr>
+                <td><strong>Incident Response</strong></td>
+                <td>"Through SOAR-Lite, I orchestrated the Response phase. Instead of manual triage, my engine automatically dropped traffic from brute-forcing IPs by updating the database tracking blocked entities."</td>
+            </tr>
+            <tr>
+                <td><strong>Vulnerability Assess</strong></td>
+                <td>"I understand how to map vulnerabilities to MITRE ATT&CK. In a cloud context, this looks like scanning Docker images or Terraform code for misconfigurations before CI/CD deployment."</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>B. Cloud Security (AWS Focus)</h3>
+        <table>
+            <tr><th width="25%">Concept/Tool</th><th>How you speak to it in an interview</th></tr>
+            <tr>
+                <td><strong>IAM (Least Privilege)</strong></td>
+                <td>"At TefoLogic, I provisioned restricted IAM roles for EC2 instances using Terraform. Instead of attaching AdminAccess, I crafted policies matching exact API actions required, securing the client's prod environment."</td>
+            </tr>
+            <tr>
+                <td><strong>Security Groups</strong></td>
+                <td>"I configured stateful SGs to ensure databases (Port 3306/5432) were only accessible from specific internal subnets, never exposed to <code>0.0.0.0/0</code>."</td>
+            </tr>
+            <tr>
+                <td><strong>CloudTrail</strong></td>
+                <td>"I monitor CloudTrail logs to audit infrastructure changes. If someone creates an unauthorized S3 bucket, CloudTrail shows the IAM role, IP, and timestamp of who triggered the 'PutBucket' API call."</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>C. Programming & Automation</h3>
+        <table>
+            <tr><th width="25%">Concept/Tool</th><th>How you speak to it in an interview</th></tr>
+            <tr>
+                <td><strong>Python</strong></td>
+                <td>"It's my primary language for cloud automation. I wrote SOAR-Lite in Python, handling SQLite data pipelines and Regex parsing. I'm highly comfortable scripting AWS solutions via <code>boto3</code>."</td>
+            </tr>
+            <tr>
+                <td><strong>Bash / PowerShell</strong></td>
+                <td>"I use it for fast, localized automation on VMs. Specifically for automating Cron jobs, user provisioning, or fetching IMDS metadata on an EC2 server."</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2 class="section-title">PART 2: JD TECHNOLOGIES TO BRIDGE (GAP FILLING)</h2>
+
+    <div class="card">
+        <h3>D. Managed Kubernetes (EKS / AKS)</h3>
+        <p><em>TMX requires K8s knowledge. You have Docker. Bridge the gap.</em></p>
+        <p><strong>The Bridge Phrase:</strong> "I'm very comfortable packaging apps locally using Docker and Docker-compose. Since K8s is essentially orchestrating those containers at scale, I've spent the last month diving into control-plane architecture."</p>
+        <table>
+            <tr><th width="30%">K8s Concept</th><th>Cloud Context</th></tr>
+            <tr><td><strong>EKS (AWS) / AKS (Azure)</strong></td><td>AWS/Azure manages the Master Nodes (Control Plane); you just manage Worker nodes and deployments.</td></tr>
+            <tr><td><strong>Pod vs Container</strong></td><td>Pods wrap containers. K8s scales Pods, not containers directly.</td></tr>
+            <tr><td><strong>Service (LoadBalancer)</strong></td><td>Creates an AWS ALB/NLB implicitly to route external internet traffic to Pods inside the cluster.</td></tr>
+            <tr><td><strong>ReplicaSet / HPA</strong></td><td>HPA (Horizontal Pod Autoscaler) reads CPU/Metrics and changes the Replica count automatically to match load.</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>E. Cloud Cost Management (FinOps)</h3>
+        <p><em>TMX looks for efficiency alongside engineering.</em></p>
+        <ul>
+            <li><strong>Right-sizing:</strong> Monitoring CloudWatch CPU/RAM metrics to ensure we aren't using a <code>t3.xlarge</code> when a <code>t3.medium</code> will do.</li>
+            <li><strong>Storage Tiers:</strong> Moving older logs from S3 Standard to S3 Glacier via Lifecycle Policies.</li>
+            <li><strong>Compute Savings:</strong> Utilizing Spot Instances for stateless batch-processing, and Compute Savings Plans/Reserved Instances for static, 24/7 web apps.</li>
+            <li><strong>Tagging:</strong> Mandating strict Terraform tagging (e.g., <code>CostCenter=TradingDB</code>) so billing is fully allocated.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>F. Disaster Recovery (DR) & High Availability</h3>
+        <p><em>Crucial for a Stock Exchange. Ensure you speak to RTO/RPO.</em></p>
+        <table>
+            <tr><th width="30%">Strategy</th><th>Description</th></tr>
+            <tr><td><strong>Multi-AZ (HA)</strong></td><td>Spreading EC2/RDS across multiple Availability Zones in a single region. Protects against datacenter loss.</td></tr>
+            <tr><td><strong>Pilot Light (DR)</strong></td><td>Keeping minimal core infra running in Region B, and scripting the rest by Terraform in an emergency. RTO: Minutes to Hours.</td></tr>
+            <tr><td><strong>Multi-Region Active-Active</strong></td><td>Traffic routed globally via Route 53 to Region A and Region B simultaneously. Databases replicate continuously. RTO: Zero. Expensive but needed for stock exchanges.</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>G. ARM Templates vs Terraform</h3>
+        <p><em>They use Azure and AWS. Know the difference.</em></p>
+        <ul>
+            <li><strong>ARM Templates:</strong> Native Microsoft JSON (or Bicep format). Excellent for deep Azure integrations but locked to the Azure ecosystem.</li>
+            <li><strong>Terraform:</strong> Provider-agnostic (HCL syntax). Can deploy AWS, Azure, and even Kubernetes resources via the same state file workflow. "I prefer Terraform as it's the industry standard for multi-cloud, which aligns with TMX's hybrid structure."</li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | TMX Group Cloud Engineer Interview
+</footer>
+
+</body>
+</html>

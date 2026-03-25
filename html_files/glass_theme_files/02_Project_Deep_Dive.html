@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT DEEP DIVE GUIDE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap');
+        /* Premium Aurora Glass Theme */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-border-top: rgba(255, 255, 255, 0.25);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --search-outline: #38bdf8;
+            --success: #10b981;
+            --danger: #f43f5e;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; color: var(--text-main); font-weight: 600; margin-top: 0; margin-bottom: 15px; letter-spacing: -0.5px; }
+        a { color: var(--accent); text-decoration: none; }
+        pre, code { font-family: 'SF Mono', Consolas, monospace; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+        .arch-diagram { background-color: rgba(0,0,0,0.4); padding: 1rem; border-radius: 5px; border-left: 2px solid var(--accent); white-space: pre-wrap; font-family: 'SF Mono', monospace; font-size: 0.95rem; margin: 1rem 0; overflow-x: auto;}
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { padding: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: left; vertical-align: top; }
+        th { background-color: rgba(255,255,255,0.1); color: var(--text-main); font-weight: 600; }
+        td { color: var(--text-muted); }
+        
+        .collapsible { cursor: pointer; padding: 15px; width: 100%; text-align: left; border: none; outline: none; background: rgba(255,255,255,0.1); color: var(--text-main); border: 1px solid var(--glass-border); backdrop-filter: blur(8px); font-weight: bold; border-radius: 4px; margin-bottom: 5px; transition: 0.2s;}
+        .active, .collapsible:hover { background-color: var(--accent); color: #fff; }
+        .content { padding: 15px; display: none; overflow: hidden; background-color: rgba(22, 33, 62, 0.5); border-radius: 0 0 4px 4px; margin-bottom: 15px; border-left: 2px solid var(--accent); }
+        
+        nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+        .nav-btn { 
+            background: transparent; color: var(--text-muted); 
+            border: 1px solid transparent; 
+            padding: 8px 18px; border-radius: 24px; cursor: pointer; text-decoration: none; 
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; 
+        }
+        .nav-btn.active, .nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); border-color: var(--glass-border); box-shadow: 0 0 15px var(--accent-glow); }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: var(--text-muted); }
+        strong { color: var(--text-main); }
+        
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; border-color: #fff; border: none; padding: 12px 18px; border-radius: 5px; cursor: pointer; z-index: 99; font-weight: bold; }
+        footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; }
+        
+        .qa-box { margin-bottom: 15px; }
+        .qa-q { font-weight: bold; color: var(--text-main); margin-bottom: 5px; }
+        .qa-a { color: var(--text-muted); padding-left: 15px; border-left: 2px solid var(--accent-secondary); }
+
+        @media print {
+            body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+            .card, .content, .arch-diagram { box-shadow: none; border: 1px solid #ccc; background-color: #fff; color: #000; break-inside: avoid; }
+            h1, h2, h3, strong, .qa-q { color: black; }
+            th { background-color: #e8e4dc; color: black; border-color: #ccc; }
+            td { border-color: #ccc; color: #333; }
+            nav.sticky, #back-to-top { display: none; }
+            .content { display: block !important; }
+            .collapsible { background-color: #e8e4dc; color: black; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Introduction</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn active">Project Deep Dive</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Questions Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Study Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1>PROJECT DEEP DIVE GUIDE</h1>
+        <p>Mastering technical explanations for your portfolio projects.</p>
+    </header>
+
+    <!-- SECTION 1: SOC THREAT DETECTION -->
+    <div class="card">
+        <h2>PROJECT 1: SOC Threat Detection Log Analyzer</h2>
+        
+        <h3>30-Second Elevator Pitch</h3>
+        <p style="font-style: italic; border-left: 2px solid var(--accent); padding-left: 10px;">
+            "I built a Python-based SOC Threat Detection Log Analyzer that acts as a lightweight SIEM. It ingests Linux authentication logs, parses them using custom Regex patterns, and runs them through a detection engine. It uses a sliding-time window to detect brute force attacks, flags suspicious cross-geolocation logins, and identifies abnormal after-hours access, outputting actionable incident reports in JSON format."
+        </p>
+
+        <h3>Architecture Diagram</h3>
+        <div class="arch-diagram">
+[Linux /var/log/auth.log] 
+       ↓ 
+(LogParser: Regex matching, Timestamp extraction)
+       ↓
+(DetectionEngine: Memory-based sliding window & sets)
+       ├── Rule 1: Brute Force (>10 fails in 5m)
+       ├── Rule 2: Suspicious IP (New IP for known user)
+       └── Rule 3: Abnormal Time (Outside 8AM-6PM)
+       ↓
+(AlertManager: Console formatting & JSON export)
+       ↓
+[incident_report.json]
+        </div>
+
+        <h3>Component Breakdown</h3>
+        <ul>
+            <li><strong>main.py:</strong> The entry point. Uses <code>argparse</code> to provide a CLI interface. Orchestrates the pipeline: Read -> Parse -> Detect -> Alert.</li>
+            <li><strong>log_parser.py:</strong> Contains specific Regex patterns to match syslog formats. Dynamically injects the current year to handle syslog's missing year issue in datetimes. Extracts Timestamp, User, IP, and Status.</li>
+            <li><strong>detection_engine.py:</strong> The brains. 
+                <br>- <em>Brute Force:</em> Tracks login attempts using <code>collections.deque</code> and <code>timedelta</code> to implement a 5-minute sliding window.
+                <br>- <em>Suspicious Login:</em> Maintains a <code>set()</code> mapping known Users to IPs to flag anomalies.
+                <br>- <em>Time Check:</em> Uses <code>datetime.hour</code> to flag non-business hour access.</li>
+            <li><strong>alert_manager.py:</strong> Handles the presentation layer, printing color-coded terminal output and serializing dictionaries to <code>incident_report.json</code> for downstream API consumption.</li>
+        </ul>
+
+        <h3>Design Decisions</h3>
+        <table>
+            <tr><th>Decision</th><th>Why? / Rationale</th></tr>
+            <tr>
+                <td><strong>Native Regex Parser</strong></td>
+                <td>Kept the application lightweight with zero external dependencies. Faster than heavy ML parsers for structured auth logs.</td>
+            </tr>
+            <tr>
+                <td><strong>Sliding Time Window</strong></td>
+                <td>Using a strict 5-minute window rather than total counts prevents false positives. 10 fails over a month is normal; 10 fails in 5 minutes is an attack.</td>
+            </tr>
+            <tr>
+                <td><strong>JSON Output</strong></td>
+                <td>Machine-readable format. In a real cloud environment, this JSON could be easily shipped to AWS S3 or ingested by an AWS Lambda function for further orchestration.</td>
+            </tr>
+        </table>
+
+        <button class="collapsible">View Setup for 15 Potential Q&As (Expand)</button>
+        <div class="content">
+            <div class="qa-box">
+                <div class="qa-q">Q: How does this project map to Cloud Engineering?</div>
+                <div class="qa-a">"In a cloud environment, you deal with massive amounts of CloudTrail or VPC Flow logs. Building this script taught me how logging pipelines work fundamentally—ingestion, parsing, and alerting. I can apply this same Python logic inside an AWS Lambda function triggered by an S3 event."</div>
+            </div>
+            <div class="qa-box">
+                <div class="qa-q">Q: Why did you use Python instead of Bash?</div>
+                <div class="qa-a">"Bash is great for simple grepping, but Python's `datetime` and `timedelta` modules were required for the complex 5-minute sliding window implementation. Python also allows easy scaling to APIs and JSON serialization."</div>
+            </div>
+            <div class="qa-box">
+                <div class="qa-q">Q: How did you handle massive log files?</div>
+                <div class="qa-a">"Instead of loading the entire file into memory with readlines(), I processed the file line-by-line using a generator setup, ensuring the memory footprint stays low even if the log file is gigabytes in size."</div>
+            </div>
+            <!-- More Q&A can be practiced verbally referencing the architecture -->
+        </div>
+    </div>
+
+    <!-- SECTION 2: SOAR-LITE -->
+    <div class="card">
+        <h2>PROJECT 2: SOAR-Lite (Security Orchestration, Automation & Response)</h2>
+        
+        <h3>30-Second Elevator Pitch</h3>
+        <p style="font-style: italic; border-left: 2px solid var(--accent); padding-left: 10px;">
+            "I built an end-to-end SOAR platform. It ingests security events into an SQLite database, evaluates them against a JSON-configurable rule engine, and triggers automated remediation like blocking malicious IPs. It features a Flask web dashboard for SOC analysts to monitor alerts, view blocked IPs, and export forensics data to CSV, demonstrating my ability to build automated, full-stack security tools."
+        </p>
+
+        <h3>Architecture Diagram</h3>
+        <div class="arch-diagram">
+[Security Event Logs] 
+       ↓ 
+(LogCollector.py: Parses JSON/Syslog events)
+       ↓
+[SQLite Database: 4 Relational Tables]
+       ↓
+(Engine.py: Evaluates JSON Rules → Alert Trigger)
+       ↓
+(Automation: Executes BLOCK_IP, Inserts to DB)
+       ↓
+[Flask Dashboard (app.py): Metrics, Alerts, CSV Export]
+        </div>
+
+        <h3>Component Breakdown</h3>
+        <ul>
+            <li><strong>database.py:</strong> Implements <code>sqlite3</code>. Uses <code>init_db()</code> to create a relational schema with 4 tables: <code>logs</code>, <code>alerts</code>, <code>blocked_ips</code>, and <code>response_actions</code>.</li>
+            <li><strong>collector.py:</strong> Reads mock incoming event types (LoginFailure, LoginSuccess, PortScan, Access) and normalizes them for the database.</li>
+            <li><strong>engine.py:</strong> Unlike Project 1, rules are loaded from an external JSON file, meaning rules can be updated without touching code. When a rule matches, it automatically executes a response action (simulated firewall block) and writes it to the DB.</li>
+            <li><strong>app.py:</strong> A Flask application routing 6 endpoints (`/`, `/logs`, `/alerts`, etc.). Uses HTML/Jinja2 templates for the UI and <code>pandas</code> for generating CSV exports for analyst forensics.</li>
+        </ul>
+
+        <h3>Database Schema</h3>
+        <table>
+            <tr><th>Table Name</th><th>Columns / Purpose</th></tr>
+            <tr>
+                <td><strong>logs</strong></td>
+                <td>id, timestamp, source_ip, event_type, details, severity (Raw ingestion)</td>
+            </tr>
+            <tr>
+                <td><strong>alerts</strong></td>
+                <td>id, log_id, rule_name, alert_time, status (Flags raised by engine)</td>
+            </tr>
+            <tr>
+                <td><strong>blocked_ips</strong></td>
+                <td>id, ip_address, block_time, reason, unblock_time (Active remediations)</td>
+            </tr>
+            <tr>
+                <td><strong>response_actions</strong></td>
+                <td>id, alert_id, action_type, execute_time, status (Audit history of SOAR actions)</td>
+            </tr>
+        </table>
+
+        <h3>Differences from Project 1</h3>
+        <table>
+            <tr><th>Feature</th><th>SOC Log Analyzer (Proj 1)</th><th>SOAR-Lite (Proj 2)</th></tr>
+            <tr><td><strong>Data Storage</strong></td><td>In-memory (RAM)</td><td>Persistent Relational Database (SQLite)</td></tr>
+            <tr><td><strong>Response</strong></td><td>Passive (Alert only)</td><td>Active (Automated IP Blocking)</td></tr>
+            <tr><td><strong>Rules Engine</strong></td><td>Hardcoded Python logic</td><td>Dynamic JSON configuration</td></tr>
+            <tr><td><strong>Interface</strong></td><td>CLI / Terminal</td><td>Flask Web Dashboard</td></tr>
+        </table>
+
+        <button class="collapsible">View Setup for Potential Q&As (Expand)</button>
+        <div class="content">
+            <div class="qa-box">
+                <div class="qa-q">Q: What is the "Orchestration" part of your SOAR project?</div>
+                <div class="qa-a">"The orchestration connects the detection layer to the response layer automatically. Instead of an analyst reading an alert and manually updating a firewall rule, the engine orchestrates that workflow independently based on the JSON configs."</div>
+            </div>
+            <div class="qa-box">
+                <div class="qa-q">Q: Why did you use SQLite and not Postgres/MySQL?</div>
+                <div class="qa-a">"For a lightweight, portable proof-of-concept, SQLite was perfect because it requires no separate server setup and stores state in a single file. However, in a production AWS environment, I would migrate this to Amazon RDS (PostgreSQL) or DynamoDB for high availability and concurrent writes."</div>
+            </div>
+            <div class="qa-box">
+                <div class="qa-q">Q: How would you deploy this to AWS?</div>
+                <div class="qa-a">"I would containerize the Flask app with Docker, deploy it to ECS (Elastic Container Service) or EKS, use a managed RDS instance for the database, and place an Application Load Balancer in front of it to handle TLS termination."</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<button id="back-to-top">↑ Top</button>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | Cloud Engineer Interview | TMX Group
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+        
+        const backToTop = document.getElementById("back-to-top");
+        if(backToTop) {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = "block";
+                } else {
+                    backToTop.style.display = "none";
+                }
+            });
+            backToTop.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICK REFERENCE CHEAT SHEET</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap');
+        /* Premium Aurora Glass Theme */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-border-top: rgba(255, 255, 255, 0.25);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --search-outline: #38bdf8;
+            --success: #10b981;
+            --danger: #f43f5e;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; color: var(--text-main); font-weight: 600; margin-top: 0; margin-bottom: 15px; letter-spacing: -0.5px; }
+        a { color: var(--accent); text-decoration: none; }
+        pre, code { font-family: 'SF Mono', Consolas, monospace; background: rgba(0,0,0,0.3); padding: 2px 4px; border-radius: 4px; color: #a8dadc; }
+        .container { max-width: 1200px; margin: auto; padding: 1rem; }
+        header { text-align: center; margin-bottom: 1rem; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+        .card-full { grid-column: 1 / -1; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 0.5rem; font-size: 0.85rem; }
+        th, td { padding: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: left; vertical-align: top; }
+        th { background-color: rgba(255,255,255,0.1); color: var(--text-main); font-weight: 600; }
+        
+        ul { padding-left: 15px; margin: 5px 0; }
+        li { margin-bottom: 4px; color: var(--text-muted); }
+        strong { color: #fff; }
+
+        nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+        .nav-btn { 
+            background: transparent; color: var(--text-muted); 
+            border: 1px solid transparent; 
+            padding: 8px 18px; border-radius: 24px; cursor: pointer; text-decoration: none; 
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; 
+        }
+        .nav-btn.active, .nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); border-color: var(--glass-border); box-shadow: 0 0 15px var(--accent-glow); }
+
+        .star-box { background: rgba(233, 69, 96, 0.1); border-left: 2px solid var(--accent); padding: 8px; margin-bottom: 5px; }
+        
+        @media print {
+            body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+            .card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            margin-bottom: 1.5rem; 
+            box-shadow: var(--shadow-glass); 
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; 
+        }
+            .container { padding: 0; max-width: 100%; }
+            .grid-container { gap: 10px; }
+            h1, h2, h3, strong, code { color: black; }
+            th { background-color: #e8e4dc; color: black; border-color: #ccc; }
+            td { border-color: #ccc; color: #333; }
+            nav.sticky { 
+            position: sticky; top: 15px; 
+            background: var(--glass-bg); 
+            padding: 10px 15px; z-index: 100; 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-top); 
+            border-radius: 30px; 
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            box-shadow: var(--shadow-glass); 
+            margin: 0 auto 2rem auto; 
+            max-width: 95%; 
+        }
+            @page { margin: 0.5cm; }
+            pre, code { background: #f4f4f4; color: #000; border: 1px solid #ddd; }
+        }
+        @media (max-width: 768px) {
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn">Self Intro</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Projects</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Q Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn active">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1>QUICK REFERENCE CHEAT SHEET</h1>
+        <p style="margin:0; color:var(--text-muted);">Dense reference for live interviews or rapid pre-interview review.</p>
+    </header>
+
+    <div class="grid-container">
+        
+        <!-- AWS Services -->
+        <div class="card">
+            <h2>AWS Core Services</h2>
+            <table>
+                <tr><th>Service</th><th>Function</th></tr>
+                <tr><td><strong>IAM</strong></td><td>Identity/Access. Least Privilege. Roles > Users.</td></tr>
+                <tr><td><strong>VPC</strong></td><td>Virtual Network. Subnets, Route Tables, IGW.</td></tr>
+                <tr><td><strong>EC2</strong></td><td>Compute VMs. Backed by EBS (block storage).</td></tr>
+                <tr><td><strong>S3</strong></td><td>Object storage. Standard, IA, Glacier.</td></tr>
+                <tr><td><strong>CloudTrail</strong></td><td>API call logging (Auditing). "Who did what".</td></tr>
+                <tr><td><strong>CloudWatch</strong></td><td>Metrics & Alarms (CPU, Memory, Logs).</td></tr>
+                <tr><td><strong>Lambda</strong></td><td>Serverless compute. Event-driven.</td></tr>
+                <tr><td><strong>WAF / Shield</strong></td><td>Layer 7 Firewall (SQLi, XSS) / DDoS protection.</td></tr>
+                <tr><td><strong>GuardDuty</strong></td><td>Intelligent threat detection (ML-based).</td></tr>
+                <tr><td><strong>Route 53</strong></td><td>DNS routing & failover.</td></tr>
+            </table>
+        </div>
+
+        <!-- Azure Mapping -->
+        <div class="card">
+            <h2>AWS ↔ Azure Mapping</h2>
+            <table>
+                <tr><th>AWS Service</th><th>Azure Equivalent</th></tr>
+                <tr><td>IAM</td><td>Entra ID (Azure AD)</td></tr>
+                <tr><td>EC2 (Instances)</td><td>Azure Virtual Machines (VMs)</td></tr>
+                <tr><td>VPC</td><td>Virtual Network (VNet)</td></tr>
+                <tr><td>S3</td><td>Azure Blob Storage</td></tr>
+                <tr><td>CloudTrail</td><td>Azure Monitor / Activity Log</td></tr>
+                <tr><td>CloudWatch</td><td>Azure Monitor (Metrics/Logs)</td></tr>
+                <tr><td>Lambda</td><td>Azure Functions</td></tr>
+                <tr><td>EKS (Kubernetes)</td><td>AKS (Azure Kubernetes Service)</td></tr>
+            </table>
+        </div>
+
+        <!-- Networking & Security -->
+        <div class="card">
+            <h2>Networking & Identity</h2>
+            <ul>
+                <li><strong>Security Groups:</strong> Stateful, instance-level firewall. Allow rules only.</li>
+                <li><strong>NACLs:</strong> Stateless, subnet-level firewall. Allow & Deny rules. Needs ephemeral ports.</li>
+                <li><strong>VPN:</strong> Always encrypted tunnel over internet (IPsec).</li>
+                <li><strong>Direct Connect / ExpressRoute:</strong> Dedicated private fiber. Fast, high cost.</li>
+                <li><strong>CIDR (10.0.0.0/16):</strong> /16 = ~65k IPs (VPC). /24 = 256 IPs (Subnet).</li>
+                <li><strong>DNS Records:</strong> A (IPv4), AAAA (IPv6), CNAME (Alias), MX (Mail).</li>
+                <li><strong>Standard Ports:</strong> 22 (SSH), 80 (HTTP), 443 (HTTPS), 3389 (RDP), 53 (DNS).</li>
+            </ul>
+        </div>
+
+        <!-- Terraform -->
+        <div class="card">
+            <h2>Terraform (IaC)</h2>
+            <ul>
+                <li><code>tf init</code>: Downloads providers, initializes backend (.tfstate).</li>
+                <li><code>tf plan</code>: Dry-run. Compares state to config, shows execution plan.</li>
+                <li><code>tf apply</code>: Executes the plan against target infrastructure.</li>
+                <li><code>tf destroy</code>: Deletes managed infrastructure.</li>
+                <li><strong>State:</strong> Critical JSON file mapped to real infrastructure. Keep in S3 (Remote State) + DynamoDB (State Locking).</li>
+                <li><strong>Modules:</strong> Reusable configuration blocks. Keep code DRY.</li>
+                <li><strong>Drift:</strong> When manual UI changes break TF state. Fix: tf plan, rewrite TF, or tf import.</li>
+            </ul>
+        </div>
+
+        <!-- Kubernetes -->
+        <div class="card">
+            <h2>Kubernetes & Containers</h2>
+            <ul>
+                <li><strong>Pod:</strong> Smallest deployable unit. Holds 1+ containers.</li>
+                <li><strong>Deployment:</strong> Manages Pod scaling, updates, rollbacks.</li>
+                <li><strong>Service:</strong> Exposes Pods (ClusterIP=internal, NodePort=dev, LoadBalancer=external).</li>
+                <li><strong>Namespace:</strong> Logical cluster isolation (dev vs prod).</li>
+                <li><strong>kubectl commands:</strong>
+                    <br><code>kubectl get pods -n dev</code>
+                    <br><code>kubectl describe pod api-123</code>
+                    <br><code>kubectl logs api-123 -f</code>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Resiliency & Frameworks -->
+        <div class="card">
+            <h2>Frameworks & Resiliency</h2>
+            <ul>
+                <li><strong>NIST CSF (5 Functions):</strong> Identify, Protect, Detect, Respond, Recover.</li>
+                <li><strong>CIA Triad:</strong> Confidentiality (Encryption), Integrity (Hashing), Availability (HA Clusters/DR).</li>
+                <li><strong>RTO:</strong> Recovery Time Objective (How fast must we recover?).</li>
+                <li><strong>RPO:</strong> Recovery Point Objective (How much data loss is acceptable?).</li>
+                <li><strong>DR Strategies:</strong> Pilot Light (Fast/Mid-cost), Warm Standby, Multi-Site Active-Active (Instant/Max-cost).</li>
+            </ul>
+        </div>
+
+        <!-- STAR Method & Power Phrases -->
+        <div class="card card-full" style="display:flex; gap: 20px;">
+            <div style="flex:1;">
+                <h2>The STAR Method</h2>
+                <div class="star-box"><strong>S - Situation:</strong> Provide context (e.g., "At TefoLogic, our prod pipeline...").</div>
+                <div class="star-box"><strong>T - Task:</strong> The problem (e.g., "...was deploying manually and risky.").</div>
+                <div class="star-box"><strong>A - Action:</strong> WHAT YOU DID (e.g., "I wrote GitHub Actions & Terraform...").</div>
+                <div class="star-box"><strong>R - Result:</strong> Impact (e.g., "Deployed 50% faster with zero config drift.").</div>
+            </div>
+            <div style="flex:1;">
+                <h2>Power Phrases & TMX Facts</h2>
+                <ul>
+                    <li><strong>Fact:</strong> TMX operates the TSX, TSXV, Montreal Exchange. Highly regulated (OSFI).</li>
+                    <li><em>"My goal is to automate the deployment lifecycle so securely that human error is virtually eliminated."</em></li>
+                    <li><em>"Because of my CyberOps background, I apply the principle of least privilege instinctively when writing IAM or RBAC policies."</em></li>
+                    <li><em>"If I don’t know a specific tool, I fall back on the core concept. The underlying architecture usually aligns."</em></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | TMX Group Cloud Engineer Interview | Confidential
+</footer>
+
+</body>
+</html>

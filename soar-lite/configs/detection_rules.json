@@ -1,0 +1,27 @@
+{
+  "rules": [
+    {
+      "name": "Brute Force Detection",
+      "event_type": "LoginFailure",
+      "threshold": 3,
+      "time_window_seconds": 300,
+      "severity": "High",
+      "action": "BLOCK_IP"
+    },
+    {
+      "name": "Suspicious IP Check",
+      "event_type": "Access",
+      "malicious_ips": ["184.71.12.10", "142.112.55.20"],
+      "severity": "Medium",
+      "action": "ALERT_ONLY"
+    },
+    {
+      "name": "Unusual Login Time",
+      "event_type": "LoginSuccess",
+      "start_hour": 2,
+      "end_hour": 5,
+      "severity": "Low",
+      "action": "LOG_ONLY"
+    }
+  ]
+}

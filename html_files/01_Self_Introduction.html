@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELF-INTRODUCTION & KEY ANSWERS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --bg-color: #21201e;
+            --card-bg: #292825;
+            --accent: #df7c58;
+            --accent-secondary: #42413e;
+            --text-main: #e8e4dc;
+            --text-muted: #9b9a97;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        * { box-sizing: border-box; }
+        h1, h2, h3, h4, h5 { font-family: 'Playfair Display', ui-serif, Georgia, serif; color: var(--text-main); font-weight: 500; margin-top: 0; }
+        a { color: var(--accent); text-decoration: none; }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        .card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--accent-secondary); box-shadow: none; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+        .highlight-box { border-left: 5px solid var(--accent); background-color: rgba(233, 69, 96, 0.1); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8; }
+        nav.sticky { position: sticky; top: 0; background-color: rgba(33, 32, 30, 0.95); padding: 1rem 0; z-index: 100; border-bottom: 1px solid var(--accent-secondary); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; backdrop-filter: blur(8px); padding: 12px 0; }
+        .nav-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; white-space: nowrap; }
+        .nav-btn.active, .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: var(--text-muted); }
+        strong { color: var(--text-main); }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 12px; border: 1px solid var(--accent-secondary); text-align: left; }
+        th { background-color: var(--accent-secondary); color: var(--text-main); }
+        .use-phrase { color: var(--success); font-weight: bold; }
+        .avoid-phrase { color: var(--danger); font-weight: bold; }
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; background: #fff; color: #000; border-color: #fff; border: none; padding: 12px 18px; border-radius: 5px; cursor: pointer; z-index: 99; font-weight: bold; }
+        footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--accent-secondary); color: var(--text-muted); font-size: 0.9rem; }
+        @media print {
+            body { background-color: white; color: black; }
+            .card, .highlight-box { box-shadow: none; border: 1px solid #ccc; background-color: #fff; color: #000; break-inside: avoid; }
+            h1, h2, h3, strong { color: black; }
+            nav.sticky, #back-to-top { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sticky">
+    <a href="00_Master_Plan.html" class="nav-btn">Master Plan</a>
+    <a href="01_Self_Introduction.html" class="nav-btn active">Self Introduction</a>
+    <a href="02_Project_Deep_Dive.html" class="nav-btn">Project Deep Dive</a>
+    <a href="03_Questions_Bank.html" class="nav-btn">Questions Bank</a>
+    <a href="04_Study_Schedule.html" class="nav-btn">Study Schedule</a>
+    <a href="05_Cheat_Sheet.html" class="nav-btn">Cheat Sheet</a>
+    <a href="06_Technology_Prep.html" class="nav-btn">Tech Prep</a>
+</nav>
+
+<div class="container">
+    <header>
+        <h1 style='display:flex; align-items:center; justify-content:center; gap:8px;'><span style='color:var(--accent); font-size:1.2em; padding-top:4px;'>✺</span> SELF-INTRODUCTION & KEY ANSWERS</h1>
+        <p>The scripts that will set the tone for the entire interview.</p>
+    </header>
+
+    <div class="card">
+        <h2>1. THE 60-SECOND INTRO (Use if they say: "Give us a brief overview")</h2>
+        <div class="highlight-box">
+            "Good morning/afternoon! I'm Ravi Kiran Kambhampati, a cloud and cybersecurity professional based in Toronto. I'm currently completing my Post-Graduate program in Cloud Operations at York University, which follows my earlier Post-Graduate in Cybersecurity Operations — also from York. This dual specialization gives me a unique perspective: <strong>I don't just build cloud infrastructure, I build it with security baked in from the start.</strong><br><br>
+            Professionally, I worked as a Cloud Engineer Intern at TefoLogic, where I deployed AWS infrastructure using Terraform, configured IAM policies following least privilege, set up CI/CD pipelines with GitHub Actions, and managed security groups and CloudTrail monitoring — all in a production environment serving real clients.<br><br>
+            I've also built two hands-on projects: a SOC Threat Detection Log Analyzer that acts as a mini-SIEM, and 'SOAR-Lite', an end-to-end security automation platform connecting Python, SQLite, and automated firewall blocks.<br><br>
+            What excites me about TMX is the opportunity to work on Canada's critical financial infrastructure. My combination of security knowledge and cloud engineering skills means I can help build infrastructure that's not just scalable and reliable, but fundamentally secure — which is exactly what a stock exchange demands."
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>2. THE 90-SECOND EXTENDED (Use if they say: "Walk us through your resume")</h2>
+        <div class="highlight-box">
+            <em>[Deliver the 60-second intro, then smoothly seamlessly add:]</em><br><br>
+            "...At TefoLogic, I got very comfortable with Infrastructure as Code. I wasn't clicking through the AWS console; I was writing Terraform modules for EC2 and VPC deployments, and using GitHub Actions to automate our testing and deployments. That experience taught me how to operate in a real DevOps culture.<br><br>
+            On the certification side, I'm currently finalizing my prep for the CompTIA Security+ exam, and my immediate next goal for this year is the AWS Solutions Architect Associate, followed by the Certified Kubernetes Administrator (CKA). <br><br>
+            I noticed the Cloud Engineer role at TMX emphasizes high availability, robust environments, and modernization across AWS and Azure. Given my background bridging CloudOps and CyberOps, I believe I can be highly effective in maintaining uptime while ensuring compliance and security are never compromised."
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>3. WHY TMX GROUP?</h2>
+        <ul>
+            <li><strong>Critical Financial Infrastructure:</strong> "TMX isn't just another tech company; it's the financial engine of Canada. Building cloud infrastructure for TSX/Montreal Exchange means dealing with strict compliance (OSFI), zero-downtime requirements, and high stakes. That level of rigor appeals to my security operations background."</li>
+            <li><strong>Cloud Modernization Journey:</strong> "I know TMX is actively optimizing its cloud footprint across AWS and Azure. I want to be part of a team that is building out resilient, modern infrastructure."</li>
+            <li><strong>Security Importance:</strong> "In a financial ecosystem, security and infrastructure are inseparable. TMX's focus on trust aligns perfectly with my dual education in CyberOps and CloudOps."</li>
+            <li><strong>Career Growth:</strong> "Working alongside senior engineers at TMX is the ideal environment for me to grow into a Senior Cloud Architect over the next few years."</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>4. WHY SHOULD WE HIRE YOU?</h2>
+        <ul>
+            <li><strong>The Security+Cloud Bridge:</strong> "Most junior or mid-level cloud engineers treat security as an afterthought. I have a dedicated post-grad in it. I look at every Terraform script and AWS architecture through the lens of NIST and least privilege."</li>
+            <li><strong>Proven Production Experience:</strong> "At TefoLogic, I dealt with real clients. I know what it means to push code through CI/CD, manage state in Terraform, and actively monitor infrastructure via CloudTrail."</li>
+            <li><strong>Builder Mindset:</strong> "I don't just study theory. Getting my hands dirty building SOAR-Lite—writing Python to ingest logs, detect brute-force, and automatically trigger network blocks—shows I can automate solutions and write clean scripts."</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>5. 5-YEAR PLAN</h2>
+        <p><strong>Goal:</strong> "In 5 years, I see myself as a Senior Cloud Security Architect or Lead Cloud Engineer."</p>
+        <p><strong>Path:</strong> "In the first year, I plan to deeply master TMX's specific AWS/Azure environment and acquire my AWS Solutions Architect and Kubernetes (CKA) certifications. By year 3, I want to be leading cloud modernization projects, heavily automating our deployments, and perhaps mentoring incoming junior engineers to reinforce a security-first engineering culture."</p>
+    </div>
+
+    <div class="card">
+        <h2>6. BIGGEST WEAKNESS</h2>
+        <p><strong>The Weakness:</strong> "Over-optimizing before shipping."</p>
+        <p><strong>The Script:</strong> "Because of my security background, my tendency is to try and perfect a script or architecture to handle every possible edge-case before deploying it. I've realized this can slow down agile delivery. <strong>To mitigate this</strong>, I've started heavily utilizing the 'MVP' (Minimum Viable Product) mindset. At TefoLogic, I learned to push functional, secure baselines quickly via CI/CD, and then iterate and optimize in subsequent sprints. I use Jira/Trello to backlog the 'nice-to-have' optimizations so I don't get stuck in analysis paralysis."</p>
+    </div>
+
+    <div class="card">
+        <h2>7. QUESTIONS TO ASK THE INTERVIEWER (Pick 2-3)</h2>
+        <ul>
+            <li>"Given the high-availability requirements of a stock exchange, how is the Cloud team currently balancing the rollout of new features with strict reliability and regulatory compliance?"</li>
+            <li>"You mentioned a hybrid AWS/Azure environment. Is the goal to treat them as active-active for disaster recovery, or are specific workloads isolated to specific clouds?"</li>
+            <li>"What does the on-call, incident response rotation look like for this specific Cloud Engineer team?"</li>
+            <li>"If I start next month, what is the most critical pain point or project you'd want me contributing to in my first 60 days?"</li>
+            <li>"How closely does the Cloud Engineering team work with the dedicated InfoSec team at TMX?"</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>8. KEY PHRASES & BODY LANGUAGE</h2>
+        <table>
+            <tr>
+                <th>Use These Phrases <span class="use-phrase">(Yes)</span></th>
+                <th>Avoid These Phrases <span class="avoid-phrase">(No)</span></th>
+            </tr>
+            <tr>
+                <td>"In my production experience at TefoLogic..."</td>
+                <td>"In school we learned..."</td>
+            </tr>
+            <tr>
+                <td>"I implemented least privilege IAM..."</td>
+                <td>"I made sure things were secure..."</td>
+            </tr>
+            <tr>
+                <td>"I utilized Terraform for Infrastructure as Code..."</td>
+                <td>"I clicked through the AWS console to make..."</td>
+            </tr>
+            <tr>
+                <td>"My approach to resolving that incident was..."</td>
+                <td>"I guess I would try to fix it by..."</td>
+            </tr>
+        </table>
+        <br>
+        <p><strong>Body Language Tips:</strong></p>
+        <ul>
+            <li><strong>Eye Contact:</strong> Look exactly at the camera lens when speaking, not at the screen.</li>
+            <li><strong>Hands:</strong> Keep hands visible occasionally. Use open hand gestures; it builds trust.</li>
+            <li><strong>Pacing:</strong> When asked a highly technical question, pause for exactly 2 seconds before speaking. It shows thoughtfulness.</li>
+            <li><strong>Nodding:</strong> Active listening when they speak. Smile. Engineers want to hire people they enjoy working with.</li>
+        </ul>
+    </div>
+
+</div>
+
+<button id="back-to-top">↑ Top</button>
+
+<footer>
+    Prepared for Ravi Kiran Kambhampati | Cloud Engineer Interview | TMX Group
+</footer>
+
+<script>
+    const backToTop = document.getElementById("back-to-top");
+    if(backToTop) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        });
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+</script>
+</body>
+</html>

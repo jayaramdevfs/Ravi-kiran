@@ -1,0 +1,16 @@
+Mar 12 08:15:22 server1 sshd[1234]: Accepted password for user1 from 142.119.55.10 port 22 ssh2
+Mar 12 08:30:05 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:08 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:10 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:12 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:15 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:18 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:20 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:22 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:25 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:28 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:30 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 08:30:35 server1 sshd[1235]: Failed password for admin from 198.51.100.44 port 22 ssh2
+Mar 12 10:15:00 server1 sshd[1280]: Accepted password for admin from 203.0.113.50 port 22 ssh2
+Mar 12 12:45:10 server1 sshd[1400]: Accepted password for user1 from 10.0.0.99 port 22 ssh2
+Mar 12 23:45:10 server1 sshd[1500]: Accepted password for user2 from 142.119.55.20 port 22 ssh2

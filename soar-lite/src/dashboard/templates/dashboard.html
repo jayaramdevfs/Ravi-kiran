@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOAR-Lite | Professional SOC Interface</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            background-color: var(--bg-card);
+            min-height: 100vh;
+            border-right: 1px solid #334155;
+            padding-top: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-blue);
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            border-bottom: 1px solid #334155;
+            background: transparent;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+        }
+
+        .stat-value {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .table {
+            color: var(--text-main);
+            border-color: #334155;
+        }
+
+        .table > :not(caption) > * > * {
+            background-color: transparent;
+            color: var(--text-main);
+        }
+
+        .table th {
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            border-top: none;
+        }
+
+        .severity-high { color: var(--accent-red); font-weight: 800; }
+        .severity-medium { color: #f59e0b; font-weight: 800; }
+        .severity-low { color: var(--accent-blue); font-weight: 800; }
+
+        .btn-action {
+            background-color: var(--accent-blue);
+            color: var(--bg-dark);
+            font-weight: 700;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            background-color: #7dd3fc;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 d-none d-md-block sidebar">
+                <div class="px-4 mb-5">
+                    <h3 class="text-white fw-bold">SOAR-<span style="color: var(--accent-blue)">Lite</span></h3>
+                    <div class="badge bg-primary">Infrastructure Console</div>
+                </div>
+                <nav class="nav flex-column px-2">
+                    <a class="nav-link active" href="/">📊 Overview</a>
+                    <a class="nav-link" href="/logs">📝 Event Logs</a>
+                    <a class="nav-link" href="/alerts">🚨 Alerting Console</a>
+                    <a class="nav-link" href="/blocked_ips">🛡️ Firewall Management</a>
+                </nav>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-10 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <div>
+                        <h2 class="fw-bold mb-1">SOC Dashboard Overview</h2>
+                        <p class="text-muted">Security Orchestration and Real-Time Event Analysis.</p>
+                    </div>
+                    <form action="/api/ingest" method="POST">
+                        <button type="submit" class="btn btn-action">Execute Infrastructure Scan</button>
+                    </form>
+                </div>
+
+                <!-- Metrics -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card stat-card">
+                            <div class="stat-label">Total Logs Analyzed</div>
+                            <div class="stat-value">{{ total_logs }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stat-card">
+                            <div class="stat-label">Active Cyber Threats</div>
+                            <div class="stat-value text-danger">{{ total_alerts }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stat-card">
+                            <div class="stat-label">Automated Firewall Blocks</div>
+                            <div class="stat-value text-success">{{ total_blocked }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <!-- Alerts -->
+                    <div class="col-md-7">
+                        <div class="card h-100">
+                            <div class="card-header d-flex justify-content-between">
+                                <span>Recent Threat Detections</span>
+                                <a href="/export/csv" class="btn btn-sm btn-outline-info text-white">Download CSV Report</a>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Detected Time</th>
+                                                <th>Security Rule</th>
+                                                <th>Source IP</th>
+                                                <th>Severity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for alert in alerts %}
+                                            <tr>
+                                                <td class="small">{{ alert.timestamp }}</td>
+                                                <td>{{ alert.rule_name }}</td>
+                                                <td><code>{{ alert.source_ip }}</code></td>
+                                                <td class="severity-{{ alert.severity|lower }}">{{ alert.severity }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% if not alerts %}
+                                            <tr><td colspan="4" class="text-center py-5 text-muted">Passive monitoring active. No threats detected.</td></tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ingestion Feed -->
+                    <div class="col-md-5">
+                        <div class="card h-100">
+                            <div class="card-header">Live Ingestion Feed</div>
+                            <div class="card-body p-0" style="max-height: 480px; overflow-y: auto;">
+                                <table class="table table-sm mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Event Trigger</th>
+                                            <th>Client IP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for log in logs %}
+                                        <tr>
+                                            <td class="small text-muted">{{ log.timestamp }}</td>
+                                            <td class="small">{{ log.event_type }}</td>
+                                            <td class="small"><code>{{ log.ip }}</code></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Firewall Console -->
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">Firewall Mitigation Control (SOAR)</div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Target Client IP</th>
+                                                <th>Mitigation Reason</th>
+                                                <th>Block Execution Time</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for bip in blocked_ips %}
+                                            <tr>
+                                                <td><code>{{ bip.ip }}</code></td>
+                                                <td>{{ bip.reason }}</td>
+                                                <td>{{ bip.blocked_at }}</td>
+                                                <td><span class="badge bg-danger">ACTIVE BLOCK</span></td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% if not blocked_ips %}
+                                            <tr><td colspan="4" class="text-center py-4 text-muted">Firewall is clear. No active blocks.</td></tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
